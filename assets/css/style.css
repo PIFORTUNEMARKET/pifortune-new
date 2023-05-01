@@ -3968,3 +3968,17 @@ ul.checkmarkList li:before { content:"\e954";font-family:'annimex-icons'; positi
 .bootstrap-tagsinput .tag [data-role="remove"] { margin-left: 8px; cursor: pointer; }
 .bootstrap-tagsinput .tag [data-role="remove"]:after { content: "x"; padding: 0px 2px; }
 
+
+
+
+/*.claim-spann{
+  display: flex;
+  position: absolute;
+  margin: 0;
+}*/
+
+.input-group{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
