@@ -70,7 +70,6 @@ customerForm.addEventListener("submit", (e) => {
             },
             onClick: function () {},
           }).showToast();
-          console.log(res.data.token);
           localStorage.setItem("user", JSON.stringify(res.data.token));
           setInterval(() => {
             window.location.href = "/";
