@@ -5,10 +5,7 @@ const vendorAccount = document.querySelector(".vendor-account");
 
 userAccount.addEventListener("click", async () => {
   const scopes = ["username", "payments"];
-  const authResult = await window.Pi.authenticate(
-    scopes,
-    onIncompletePaymentFound
-  );
+  const authResult = await Pi.authenticate(scopes, onIncompletePaymentFound);
 
   console.log(authResult);
 });
