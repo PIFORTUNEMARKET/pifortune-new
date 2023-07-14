@@ -1,0 +1,7 @@
+.user-account {
+  cursor: pointer;
+}
+
+.user-account:hover {
+  color: red;
+}
