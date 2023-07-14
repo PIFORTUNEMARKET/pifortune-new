@@ -1,5 +1,12 @@
+const user = localStorage.getItem("user");
+const vendor = localStorage.getItem("vendor");
+
+//if a user / vendor is logged in, the register vendor page can not be accessed
+if (user || vendor) window.location.replace("/");
+
 const customerForm = document.getElementsByClassName("customer-form")[0];
 
+//check if app is in development or production
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
     window.location.hostname === "[::1]" ||
@@ -81,7 +88,8 @@ customerForm.addEventListener("submit", (e) => {
             },
             onClick: function () {},
           }).showToast();
-          localStorage.setItem("user", JSON.stringify(res.data.token));
+          localStorage.setItem("vendor", JSON.stringify(res.data.token));
+          localStorage.removeItem("user");
           setInterval(() => {
             window.location.href = "/";
           }, 3000);
