@@ -1,6 +1,16 @@
 const customerForm = document.getElementsByClassName("customer-form")[0];
-// const API_URL = "http://localhost:4000/api/";
-const API_URL = "https://pifortune-server.onrender.com/api/";
+
+const isLocalhost = Boolean(
+  window.location.hostname === "localhost" ||
+    window.location.hostname === "[::1]" ||
+    window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
+);
+
+const API_URL = isLocalhost
+  ? "http://localhost:4000/api/"
+  : "https://pifortune-server.onrender.com/api/";
 
 customerForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -35,7 +45,7 @@ customerForm.addEventListener("submit", (e) => {
   } else {
     delete data.confirmPassword;
 
-    fetch(`${API_URL}user/auth/register`, {
+    fetch(`${API_URL}vendor/auth/register`, {
       method: "POST",
       headers: {
         Accept: "application/json",
