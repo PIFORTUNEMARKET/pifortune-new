@@ -1,8 +1,15 @@
 const user = localStorage.getItem("user");
+const vendor = localStorage.getItem("vendor");
 
 const userAccount = document.querySelector(".user-account");
 const vendorAccount = document.querySelector(".vendor-account");
 const authenticatedUser = document.querySelector(".authenticated-user");
+const authenticatedVendor = document.querySelector(".authenticated-vendor");
+
+if (vendor) {
+  authenticatedVendor.textContent = `Hi ${savedUser.userName}`;
+  userAccount.style.display = "none";
+}
 
 const onIncompletePaymentFound = (payment) => {
   console.log("onIncompletePaymentFound", payment);

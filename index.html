@@ -85,6 +85,7 @@
                             <!--Setting Dropdown-->
                             <!-- <div class="user-link iconset"><i class="icon an an-user-expand"></i><span class="tooltip-label ">User</span></div> -->
                             <p class="user-account cursor-pointer">PI</p>
+                            <p class="authenticated-vendor"></p>
                             <p class="authenticated-user"></p>
                             <div class="user-link iconset"><i class="icon an an-user-expand"></i><span
                                     class="tooltip-label vendor-account">Vendor</span></div>
@@ -2542,21 +2543,7 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="https://sdk.minepi.com/pi-sdk.js"></script>
-    <script>
-
-        console.log(window.location.hostname)
-        console.log(window.location.href)
-        console.log("here")
-
-        // const isSandBox = Boolean(
-        //     window.location.hostname.includes("") === "localhost" ||
-        //     window.location.hostname === "[::1]" ||
-        //     window.location.hostname.match(
-        //         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
-        //     )
-        // );
-
-        Pi.init({ version: "2.0", sandbox: true })</script>
+    <script>Pi.init({ version: "2.0", sandbox: true })</script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="assets/js/pages/all.js"></script>
     </div>
