@@ -6,9 +6,36 @@ const vendorAccount = document.querySelector(".vendor-account");
 const authenticatedUser = document.querySelector(".authenticated-user");
 const authenticatedVendor = document.querySelector(".authenticated-vendor");
 
+//check if app is in development or production
+const isLocalhost = Boolean(
+  window.location.hostname === "localhost" ||
+    window.location.hostname === "[::1]" ||
+    window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
+);
+
+const API_URL = isLocalhost
+  ? "http://localhost:4000/api/"
+  : "https://pifortune-server.onrender.com/api/";
+
 if (vendor) {
-  authenticatedVendor.textContent = `Hi ${savedUser.userName}`;
-  userAccount.style.display = "none";
+  fetch(`${API_URL}vendor/auth/verify/token`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ token: JSON.parse(vendor) }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (res.success) {
+        authenticatedVendor.textContent = `Hi ${res.data.firstName}`;
+        vendorAccount.style.display = "none";
+        localStorage.removeItem("user");
+      }
+    });
 }
 
 const onIncompletePaymentFound = (payment) => {
