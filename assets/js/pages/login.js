@@ -55,6 +55,7 @@ customerForm.addEventListener("submit", (e) => {
           onClick: function () {},
         }).showToast();
         localStorage.setItem("vendor", JSON.stringify(res.data.token));
+        localStorage.removeItem("user");
         setInterval(() => {
           window.location.href = "/";
         }, 3000);

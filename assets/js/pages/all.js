@@ -38,6 +38,12 @@ if (vendor) {
     });
 }
 
+if (user) {
+  localStorage.removeItem("vendor");
+  authenticatedUser.textContent = `Hi ${savedUser.userName}`;
+  userAccount.style.display = "none";
+}
+
 const onIncompletePaymentFound = (payment) => {
   console.log("onIncompletePaymentFound", payment);
 };
@@ -55,6 +61,7 @@ userAccount.addEventListener("click", async () => {
   };
 
   localStorage.setItem("user", JSON.stringify(savedUser));
+  localStorage.removeItem("vendor");
 
   authenticatedUser.textContent = `Hi ${savedUser.userName}`;
   userAccount.style.display = "none";
