@@ -955,88 +955,21 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                                 <form class="row g-3 vendor-upload-detail">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <label for="product-name" class="form-label">Product name</label>
                                         <input type="text" class="form-control" id="product-name" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="product-categories" class="form-label">Select Categories</label>
-                                        <select name="categories" id="product-categories">
-                                            <option value="0" label="--" selected="selected"></option>
-                                            <optgroup label="Men">
-                                                <option value="t-shirt">T-shirt</option>
-                                                <option value="dress">Dress</option>
-                                                <option value="jewellery">Jewellery</option>
-                                                <option value="apparels">Apparels</option>
-                                            </optgroup>
-                                            <optgroup label="Women">
-                                                <option value="t-shirt">Tops</option>
-                                                <option value="dress">Dress</option>
-                                                <option value="shoes">Shoes</option>
-                                                <option value="bags">Bags</option>
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Sort description</label>
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Colors</label>
-                                        <div class="form-color-box d-flex-wrap">
-                                            <input class="p-0 border-0 form-control me-2" type="color" id="colorInput1"
-                                                value="#fe877b" title="Choose your color" />
-                                            <input class="p-0 border-0 form-control me-2" type="color" id="colorInput2"
-                                                value="#ff6191" title="Choose your color" />
-                                            <input class="p-0 border-0 form-control me-2" type="color" id="colorInput3"
-                                                value="#33317d" title="Choose your color" />
-                                            <input class="p-0 border-0 form-control me-2" type="color" id="colorInput4"
-                                                value="#56d4b7" title="Choose your color" />
-                                            <input class="p-0 border-0 form-control me-0" type="color" id="colorInput5"
-                                                value="#009688" title="Choose your color" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Size</label>
-                                        <div class="form-checkbox-box d-flex-wrap">
-                                            <div class="form-check-inline">
-                                                <div class="customCheckbox"><input type="checkbox"
-                                                        class="form-check-input" id="S" name="size1" value="" /><label
-                                                        for="S">S</label></div>
-                                            </div>
-                                            <div class="form-check-inline">
-                                                <div class="customCheckbox"><input type="checkbox"
-                                                        class="form-check-input" id="M" name="size2" value="" /><label
-                                                        for="M">M</label></div>
-                                            </div>
-                                            <div class="form-check-inline">
-                                                <div class="customCheckbox"><input type="checkbox"
-                                                        class="form-check-input" id="L" name="size3" value="" /><label
-                                                        for="L">L</label></div>
-                                            </div>
-                                            <div class="form-check-inline">
-                                                <div class="customCheckbox"><input type="checkbox"
-                                                        class="form-check-input" id="XL" name="size4" value="" /><label
-                                                        for="XL">XL</label></div>
-                                            </div>
-                                            <div class="form-check-inline me-0">
-                                                <div class="customCheckbox"><input type="checkbox"
-                                                        class="form-check-input" id="XXL" name="size5" value="" /><label
-                                                        for="XXL">XXL</label></div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="col-6 col-md-4">
                                         <label class="form-label">Price <span>(In USD)</span></label>
                                         <input type="number" class="form-control" id="price1" required>
                                     </div>
-                                    <div class="col-6 col-md-4">
-                                        <label class="form-label">Sale Price <span>(In USD)</span></label>
-                                        <input type="number" class="form-control" id="price2">
-                                    </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Quantity</label>
                                         <input type="number" class="form-control" id="quantity1" required>
+                                    </div>
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <input type="checkbox" id="instock" name="instock" checked>
+                                        <label class="pt-1 ps-2" for="instock">Instock</label>
                                     </div>
                                     <div class="col-md-12">
                                         <label class="form-label">Product Tags</label>
@@ -1054,258 +987,254 @@
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary rounded">Submit</button>
                                     </div>
+                            </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Main Content-->
+    </div>
+    <!--End Body Container-->
+
+    <!--Footer-->
+    <div class="footer footer-1">
+        <div class="footer-top clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center about-col mb-4">
+                        <img src="assets/images/footer-logo.png" alt="Optimal" class="mb-3" />
+                        <p>Lagos Nigeria</p>
+                        <p class="mb-0 mb-md-3">Phone: <a href="tel:+011234567890">+234 909 507 5799</a> <span
+                                class="mx-1">|</span> Email: <a
+                                href="mailto:info@example.com">hi@pifortunemarket.site</a></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
+                        <h4 class="h4">Informations</h4>
+                        <ul>
+                            <li><a href="my-account.html">My Account</a></li>
+                            <li><a href="aboutus-style1.html">About us</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="privacy-policy.html">Privacy policy</a></li>
+                            <li><a href="#">Terms &amp; condition</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-2 footer-links">
+                        <h4 class="h4">Quick Shop</h4>
+                        <ul>
+                            <li><a href="#">Fashion (All Wears)</a></li>
+                            <li><a href="#">Electronics</a></li>
+                            <li><a href="#">Farm Produce</a></li>
+                            <li><a href="#">Auto $ Parts</a></li>
+                            <li><a href="#">Furniture</a></li>
+                            <li><a href="#">Groceries</a></li>
+                            <li><a href="#">Oil & Gas</a></li>
+                            <li><a href="#">Laptops & Phones</a></li>
+                            <li><a href="#">Machines</a></li>
+                            <li><a href="#">Blockchain</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
+                        <h4 class="h4">Customer Services</h4>
+                        <ul>
+                            <li><a href="#">Request Personal Data</a></li>
+                            <li><a href="faqs-style2.html">FAQ's</a></li>
+                            <li><a href="contact-style2.html">Contact Us</a></li>
+                            <li><a href="#">Orders and Returns</a></li>
+                            <li><a href="#">Support Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 newsletter-col">
+                        <div class="display-table pt-md-3 pt-lg-0">
+                            <div class="display-table-cell footer-newsletter">
+                                <form action="#" method="post">
+                                    <label class="h4">NEWSLETTER SIGN UP</label>
+                                    <p>Enter Your Email To Receive Daily News And Get 20% Off Coupon For All Items.
+                                    </p>
+                                    <div class="input-group">
+                                        <input type="email"
+                                            class="brounded-start input-group__field newsletter-input mb-0" name="EMAIL"
+                                            value="" placeholder="Email address" required>
+                                        <span class="input-group__btn">
+                                            <button type="submit" class="btn newsletter__submit rounded-end"
+                                                name="commit" id="Subscribe"><i class="an an-envelope-l"></i></button>
+                                        </span>
+                                    </div>
                                 </form>
                             </div>
                         </div>
+                        <ul class="list-inline social-icons mt-3 pt-1">
+                            <li class="list-inline-item"><a
+                                    href="https://www.facebook.com/profile.php?id=100086136812870"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i
+                                        class="an an-facebook" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a
+                                    href="https://twitter.com/PiFortunemarket?t=tqN9pWjpAcBnuUtgrXkQ7A&s=09"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i
+                                        class="an an-twitter" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Pinterest"><i class="an an-pinterest-p" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Instagram"><i class="an an-instagram" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="https://t.me/+SBQ-D1DSRypm4QqQ"
+                                    data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram"><i
+                                        class="an an-telegram-plane" aria-hidden="true"></i></a></li>
+                            <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip" data-bs-placement="top"
+                                    title="Whatsapp"><i class="an an-whatsapp" aria-hidden="true"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <!--End Main Content-->
         </div>
-        <!--End Body Container-->
+        <div class="footer-bottom clearfix">
+            <div class="container">
+                <div class="d-flex-center flex-column justify-content-md-between flex-md-row-reverse">
+                    <img src="assets/images/payment.png" alt="Paypal Visa Payments" />
+                    <div class="copytext text-uppercase">&copy; 2023 PIFORTUNEMARKET. All Rights Reserved.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End Footer-->
 
-        <!--Footer-->
-        <div class="footer footer-1">
-            <div class="footer-top clearfix">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center about-col mb-4">
-                            <img src="assets/images/footer-logo.png" alt="Optimal" class="mb-3" />
-                            <p>Lagos Nigeria</p>
-                            <p class="mb-0 mb-md-3">Phone: <a href="tel:+011234567890">+234 909 507 5799</a> <span
-                                    class="mx-1">|</span> Email: <a
-                                    href="mailto:info@example.com">hi@pifortunemarket.site</a></p>
-                        </div>
+    <!--Scoll Top-->
+    <span id="site-scroll"><i class="icon an an-chevron-up"></i></span>
+    <!--End Scoll Top-->
+
+    <!--MiniCart Drawer-->
+    <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id="cart-drawer" class="block block-cart">
+                    <div class="minicart-header">
+                        <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
+                                class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
+                                data-bs-placement="left" title="Close"></i></a>
+                        <h4 class="fs-6">Your cart (2 Items)</h4>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
-                            <h4 class="h4">Informations</h4>
-                            <ul>
-                                <li><a href="my-account.html">My Account</a></li>
-                                <li><a href="aboutus-style1.html">About us</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="privacy-policy.html">Privacy policy</a></li>
-                                <li><a href="#">Terms &amp; condition</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-2 footer-links">
-                            <h4 class="h4">Quick Shop</h4>
-                            <ul>
-                                <li><a href="#">Fashion (All Wears)</a></li>
-                                <li><a href="#">Electronics</a></li>
-                                <li><a href="#">Farm Produce</a></li>
-                                <li><a href="#">Auto $ Parts</a></li>
-                                <li><a href="#">Furniture</a></li>
-                                <li><a href="#">Groceries</a></li>
-                                <li><a href="#">Oil & Gas</a></li>
-                                <li><a href="#">Laptops & Phones</a></li>
-                                <li><a href="#">Machines</a></li>
-                                <li><a href="#">Blockchain</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-4 col-lg-3 footer-links">
-                            <h4 class="h4">Customer Services</h4>
-                            <ul>
-                                <li><a href="#">Request Personal Data</a></li>
-                                <li><a href="faqs-style2.html">FAQ's</a></li>
-                                <li><a href="contact-style2.html">Contact Us</a></li>
-                                <li><a href="#">Orders and Returns</a></li>
-                                <li><a href="#">Support Center</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 newsletter-col">
-                            <div class="display-table pt-md-3 pt-lg-0">
-                                <div class="display-table-cell footer-newsletter">
-                                    <form action="#" method="post">
-                                        <label class="h4">NEWSLETTER SIGN UP</label>
-                                        <p>Enter Your Email To Receive Daily News And Get 20% Off Coupon For All Items.
-                                        </p>
-                                        <div class="input-group">
-                                            <input type="email"
-                                                class="brounded-start input-group__field newsletter-input mb-0"
-                                                name="EMAIL" value="" placeholder="Email address" required>
-                                            <span class="input-group__btn">
-                                                <button type="submit" class="btn newsletter__submit rounded-end"
-                                                    name="commit" id="Subscribe"><i
-                                                        class="an an-envelope-l"></i></button>
-                                            </span>
+                    <div class="minicart-content">
+                        <ul class="clearfix">
+                            <li class="item d-flex justify-content-center align-items-center">
+                                <a class="product-image" href="product-layout1.html">
+                                    <img class="blur-up lazyload" src="assets/images/products/cart-product-img1.jpg"
+                                        data-src="assets/images/products/cart-product-img1.jpg" alt="image" title="">
+                                </a>
+                                <div class="product-details">
+                                    <a class="product-title" href="product-layout1.html">Floral Crop Top</a>
+                                    <div class="variant-cart">Black / XL</div>
+                                    <div class="priceRow">
+                                        <div class="product-price">
+                                            <span class="money">$59.00</span>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
-                            </div>
-                            <ul class="list-inline social-icons mt-3 pt-1">
-                                <li class="list-inline-item"><a
-                                        href="https://www.facebook.com/profile.php?id=100086136812870"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook"><i
-                                            class="an an-facebook" aria-hidden="true"></i></a></li>
-                                <li class="list-inline-item"><a
-                                        href="https://twitter.com/PiFortunemarket?t=tqN9pWjpAcBnuUtgrXkQ7A&s=09"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter"><i
-                                            class="an an-twitter" aria-hidden="true"></i></a></li>
-                                <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Pinterest"><i class="an an-pinterest-p"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Instagram"><i class="an an-instagram"
-                                            aria-hidden="true"></i></a></li>
-                                <li class="list-inline-item"><a href="https://t.me/+SBQ-D1DSRypm4QqQ"
-                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram"><i
-                                            class="an an-telegram-plane" aria-hidden="true"></i></a></li>
-                                <li class="list-inline-item"><a href="#" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Whatsapp"><i class="an an-whatsapp"
-                                            aria-hidden="true"></i></a></li>
-                            </ul>
-                        </div>
+                                <div class="qtyDetail text-center">
+                                    <div class="wrapQtyBtn">
+                                        <div class="qtyField">
+                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                            <input type="text" name="quantity" value="1" class="qty">
+                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i></a>
+                                    <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Remove"></i></a>
+                                </div>
+                            </li>
+                            <li class="item d-flex justify-content-center align-items-center">
+                                <a class="product-image" href="product-layout1.html">
+                                    <img class="blur-up lazyload" src="assets/images/products/cart-product-img1.jpg"
+                                        data-src="assets/images/products/cart-product-img1.jpg" alt="image" title="">
+                                </a>
+                                <div class="product-details">
+                                    <a class="product-title" href="product-layout1.html">V Neck T-shirts</a>
+                                    <div class="variant-cart">Blue / XL</div>
+                                    <div class="priceRow">
+                                        <div class="product-price">
+                                            <span class="money">$199.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="qtyDetail text-center">
+                                    <div class="wrapQtyBtn">
+                                        <div class="qtyField">
+                                            <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    class="icon an an-minus-r" aria-hidden="true"></i></a>
+                                            <input type="text" name="quantity" value="1" class="qty">
+                                            <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    class="icon an an-plus-l" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
+                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i></a>
+                                    <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Remove"></i></a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-            </div>
-            <div class="footer-bottom clearfix">
-                <div class="container">
-                    <div class="d-flex-center flex-column justify-content-md-between flex-md-row-reverse">
-                        <img src="assets/images/payment.png" alt="Paypal Visa Payments" />
-                        <div class="copytext text-uppercase">&copy; 2023 PIFORTUNEMARKET. All Rights Reserved.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--End Footer-->
-
-        <!--Scoll Top-->
-        <span id="site-scroll"><i class="icon an an-chevron-up"></i></span>
-        <!--End Scoll Top-->
-
-        <!--MiniCart Drawer-->
-        <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div id="cart-drawer" class="block block-cart">
-                        <div class="minicart-header">
-                            <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal"
-                                aria-label="Close"><i class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
-                                    data-bs-placement="left" title="Close"></i></a>
-                            <h4 class="fs-6">Your cart (2 Items)</h4>
+                    <div class="minicart-bottom">
+                        <div class="shipinfo text-center mb-3 text-uppercase">
+                            <p class="freeShipMsg"><i class="an an-truck fs-5 me-2 align-middle"></i>SPENT
+                                <b>$199.00</b> MORE FOR FREE SHIPPING
+                            </p>
                         </div>
-                        <div class="minicart-content">
-                            <ul class="clearfix">
-                                <li class="item d-flex justify-content-center align-items-center">
-                                    <a class="product-image" href="product-layout1.html">
-                                        <img class="blur-up lazyload" src="assets/images/products/cart-product-img1.jpg"
-                                            data-src="assets/images/products/cart-product-img1.jpg" alt="image"
-                                            title="">
-                                    </a>
-                                    <div class="product-details">
-                                        <a class="product-title" href="product-layout1.html">Floral Crop Top</a>
-                                        <div class="variant-cart">Black / XL</div>
-                                        <div class="priceRow">
-                                            <div class="product-price">
-                                                <span class="money">$59.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="qtyDetail text-center">
-                                        <div class="wrapQtyBtn">
-                                            <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                        class="icon an an-minus-r" aria-hidden="true"></i></a>
-                                                <input type="text" name="quantity" value="1" class="qty">
-                                                <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                        class="icon an an-plus-l" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i></a>
-                                        <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Remove"></i></a>
-                                    </div>
-                                </li>
-                                <li class="item d-flex justify-content-center align-items-center">
-                                    <a class="product-image" href="product-layout1.html">
-                                        <img class="blur-up lazyload" src="assets/images/products/cart-product-img1.jpg"
-                                            data-src="assets/images/products/cart-product-img1.jpg" alt="image"
-                                            title="">
-                                    </a>
-                                    <div class="product-details">
-                                        <a class="product-title" href="product-layout1.html">V Neck T-shirts</a>
-                                        <div class="variant-cart">Blue / XL</div>
-                                        <div class="priceRow">
-                                            <div class="product-price">
-                                                <span class="money">$199.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="qtyDetail text-center">
-                                        <div class="wrapQtyBtn">
-                                            <div class="qtyField">
-                                                <a class="qtyBtn minus" href="javascript:void(0);"><i
-                                                        class="icon an an-minus-r" aria-hidden="true"></i></a>
-                                                <input type="text" name="quantity" value="1" class="qty">
-                                                <a class="qtyBtn plus" href="javascript:void(0);"><i
-                                                        class="icon an an-plus-l" aria-hidden="true"></i></a>
-                                            </div>
-                                        </div>
-                                        <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i></a>
-                                        <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Remove"></i></a>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="subtotal">
+                            <span>Total:</span>
+                            <span class="product-price">$93.13</span>
                         </div>
-                        <div class="minicart-bottom">
-                            <div class="shipinfo text-center mb-3 text-uppercase">
-                                <p class="freeShipMsg"><i class="an an-truck fs-5 me-2 align-middle"></i>SPENT
-                                    <b>$199.00</b> MORE FOR FREE SHIPPING
-                                </p>
-                            </div>
-                            <div class="subtotal">
-                                <span>Total:</span>
-                                <span class="product-price">$93.13</span>
-                            </div>
-                            <a href="checkout-style1.html"
-                                class="w-100 p-2 my-2 btn btn-outline-primary proceed-to-checkout rounded">Proceed to
-                                Checkout</a>
-                            <a href="cart-style1.html" class="w-100 btn-primary cart-btn rounded">View Cart</a>
-                        </div>
+                        <a href="checkout-style1.html"
+                            class="w-100 p-2 my-2 btn btn-outline-primary proceed-to-checkout rounded">Proceed to
+                            Checkout</a>
+                        <a href="cart-style1.html" class="w-100 btn-primary cart-btn rounded">View Cart</a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--End MiniCart Drawer-->
-        <div class="modalOverly"></div>
+    </div>
+    <!--End MiniCart Drawer-->
+    <div class="modalOverly"></div>
 
 
-        <!-- Including Jquery -->
-        <script src="assets/js/vendor/jquery-min.js"></script>
-        <script src="assets/js/vendor/js.cookie.js"></script>
-        <!--Including Javascript-->
-        <script src="assets/js/plugins.js"></script>
-        <script src="assets/js/main.js"></script>
+    <!-- Including Jquery -->
+    <script src="assets/js/vendor/jquery-min.js"></script>
+    <script src="assets/js/vendor/js.cookie.js"></script>
+    <!--Including Javascript-->
+    <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/main.js"></script>
 
-        <!--Including Tagsinput-->
-        <script src="assets/js/vendor/bootstrap-tagsinput.js"></script>
-        <script>
-            $(document).ready(function () {
-                $("#inputTag").tagsinput('items');
+    <!--Including Tagsinput-->
+    <script src="assets/js/vendor/bootstrap-tagsinput.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#inputTag").tagsinput('items');
+        });
+    </script>
+
+    <!--Including editor tinymce-->
+    <script src="assets/js/vendor/tinymce.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            tinymce.init({
+                selector: '#editor',
+                menubar: false,
+                statusbar: false,
+                plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
+                toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help fullscreen ',
+                skin: 'bootstrap',
+                toolbar_drawer: 'floating',
+                min_height: 200,
+                autoresize_bottom_margin: 16
             });
-        </script>
-
-        <!--Including editor tinymce-->
-        <script src="assets/js/vendor/tinymce.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                tinymce.init({
-                    selector: '#editor',
-                    menubar: false,
-                    statusbar: false,
-                    plugins: 'autoresize anchor autolink charmap code codesample directionality fullpage help hr image imagetools insertdatetime link lists media nonbreaking pagebreak preview print searchreplace table template textpattern toc visualblocks visualchars',
-                    toolbar: 'h1 h2 bold italic strikethrough blockquote bullist numlist backcolor | link image media | removeformat help fullscreen ',
-                    skin: 'bootstrap',
-                    toolbar_drawer: 'floating',
-                    min_height: 200,
-                    autoresize_bottom_margin: 16
-                });
-            });
-        </script>
+        });
+    </script>
 
     </div>
     <!--End Page Wrapper-->
