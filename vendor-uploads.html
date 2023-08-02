@@ -956,40 +956,45 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-8">
                                 <form class="row g-3 vendor-upload-detail">
                                     <div class="col-md-12">
-                                        <label for="product-name" class="form-label">Product name</label>
-                                        <input type="text" class="form-control" id="product-name" required>
+                                        <label for="name" class="form-label">Product name</label>
+                                        <input type="text" name="name" class="form-control border border-secondary"
+                                            id="product-name" required>
                                     </div>
                                     <div class="col-6 col-md-4">
                                         <label class="form-label">Price <span>(In USD)</span></label>
-                                        <input type="number" class="form-control" id="price1" required>
+                                        <input type="number" name="price" class="form-control border border-secondary"
+                                            id="price" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label class="form-label">Quantity</label>
-                                        <input type="number" class="form-control" id="quantity1" required>
+                                        <input type="number" name="quantity"
+                                            class="form-control border border-secondary" id="quantity" required>
                                     </div>
                                     <div class="col-md-4 d-flex align-items-center">
-                                        <input type="checkbox" id="instock" name="instock" checked>
+                                        <input type="checkbox" name="instock" class="border border-secondary"
+                                            id="instock" name="instock" checked>
                                         <label class="pt-1 ps-2" for="instock">Instock</label>
                                     </div>
                                     <div class="col-md-12">
                                         <label class="form-label">Product Tags</label>
-                                        <div class="form-group m-0">
-                                            <input type="text" class="form-control" placeholder="" id="#inputTag"
-                                                value="" data-role="tagsinput">
-                                            <small class="form-text text-muted">Separate keywords with a comma, space
-                                                bar, or enter key</small>
-                                        </div>
+                                        <input type="text" name="tags" class="form-control border border-secondary"
+                                            placeholder="" id="inputTag" value="">
+                                        <small class="form-text text-muted">Separate keywords with a comma, space
+                                            bar, or enter key</small>
                                     </div>
                                     <div class="col-md-12">
                                         <label class="form-label">Product description</label>
-                                        <textarea class="form-control" rows="3" id="editor"></textarea>
+                                        <textarea class="form-control border border-secondary" name="desc"
+                                            id="description" rows="3"></textarea>
                                     </div>
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary rounded">Submit</button>
+                                        <button type="submit" class="btn btn-primary rounded"
+                                            id="submit">Submit</button>
                                     </div>
+                                </form>
                             </div>
 
-                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -1209,6 +1214,7 @@
     <!--Including Javascript-->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/pages/vendorUpload.js"></script>
 
     <!--Including Tagsinput-->
     <script src="assets/js/vendor/bootstrap-tagsinput.js"></script>
