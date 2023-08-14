@@ -23,3 +23,20 @@ form.addEventListener("submit", (e) => {
 });
 
 const API_URL_PRODUCT = "http://localhost:4000/api/vendor/post/product";
+
+async function fetchDetails(data) {
+  try {
+    const response = await fetch(`${API_URL_PRODUCT}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
