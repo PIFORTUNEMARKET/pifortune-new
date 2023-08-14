@@ -24,3 +24,7 @@
 .new {
   padding: 0;
 }
+
+.extra {
+  padding: 0 4px;
+}
