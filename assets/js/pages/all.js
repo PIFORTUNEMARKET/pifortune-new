@@ -33,6 +33,7 @@ if (vendor) {
       if (res.success) {
         authenticatedVendor.textContent = `Hi ${res.data.firstName}`;
         vendorAccount.style.display = "none";
+        userAccount.style.display = "none";
         localStorage.removeItem("user");
       }
     });
