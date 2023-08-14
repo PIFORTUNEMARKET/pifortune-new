@@ -21,3 +21,5 @@ form.addEventListener("submit", (e) => {
     .then((data) => console.log(data))
     .catch((error) => console.log(error));
 });
+
+const API_URL_PRODUCT = "http://localhost:4000/api/vendor/post/product";
