@@ -12,10 +12,6 @@ const isLocalhost = Boolean(
 
 console.log(picture);
 
-const API_URL = isLocalhost
-  ? "http://localhost:4000/api/"
-  : "https://pifortune-server.onrender.com/api/";
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 

@@ -33,6 +33,7 @@ if (vendor) {
       if (res.success) {
         authenticatedVendor.textContent = `Hi ${res.data.firstName}`;
         vendorAccount.style.display = "none";
+        userAccount.style.display = "none";
         localStorage.removeItem("user");
       }
     });
@@ -55,6 +56,35 @@ userAccount.addEventListener("click", async () => {
     onIncompletePaymentFound
   );
 
+  fetch(`${API_URL}user/auth/register`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userName: authResult.user.username,
+      uid: authResult.user.uid,
+    }),
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      if (!res.success) {
+        Toastify({
+          text: res.message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "#DC3545",
+          },
+          onClick: function () {},
+        }).showToast();
+      }
+    });
+
   const savedUser = {
     userName: authResult.user.username,
     accessToken: authResult.accessToken,
@@ -66,5 +96,3 @@ userAccount.addEventListener("click", async () => {
   authenticatedUser.textContent = `Hi ${savedUser.userName}`;
   userAccount.style.display = "none";
 });
-
-const getUserFromPI = () => {};
