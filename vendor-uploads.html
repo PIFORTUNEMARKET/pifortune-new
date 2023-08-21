@@ -855,160 +855,68 @@
                         <div class="row">
                             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                                 <div class="vendor-img-upload">
-                                    <div class="imagePreview position-relative text-center border p-1 mb-3">
-                                        <img class="image-preview" src="assets/images/vendor/vender-upload-preview.jpg"
+                                    <div class="imagePreview position-relative text-center border p-1 mb-3"
+                                        id="img-container">
+                                        <img class="image-preview w-100 h-100"
+                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThyEKIq_a7eWEwVEoo1aTBQ6gV1KQ4BI8ojEQgnl0ITQ&s"
                                             alt="edit" id="pictures" />
                                         <div class="thumb-edit">
-                                            <label for="imageUpload1"
-                                                class="d-flex-center justify-content-center z-index-3 position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn btn-secondary"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                    class="icon an an-pencil-l an-1x"></i></label>
-                                            <input type="file" id="imageUpload1" class="vd-image-upload d-none"
-                                                accept=".png, .jpg, .jpeg" name="pictures">
-                                        </div>
-                                    </div>
-                                    <div class="row g-2 thumb-upload-set px-3 mb-4">
-                                        <div class="col-4 col-sm-3 col-md-2 col-lg-4 thumb-upload">
-                                            <div class="thumb-preview position-relative border p-1">
-                                                <img class="thumb-preview"
-                                                    src="assets/images/vendor/vender-upload-preview.jpg" alt="edit"
-                                                    id="pictures">
-                                                <div class="thumb-edit">
-                                                    <label for="thumbUpload1"
-                                                        class="d-flex-center justify-content-center position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                            class="icon an an-pencil-l an-1x"></i></label>
-                                                    <input type="file" id="thumbUpload1" class="vd-image-upload d-none"
-                                                        accept=".png, .jpg, .jpeg" name="pictures">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-sm-3 col-md-2 col-lg-4 thumb-upload">
-                                            <div class="thumb-preview position-relative border p-1">
-                                                <img class="thumb-preview"
-                                                    src="assets/images/vendor/vender-upload-preview.jpg" alt="edit"
-                                                    id="pictures">
-                                                <div class="thumb-edit">
-                                                    <label for="thumbUpload2"
-                                                        class="d-flex-center justify-content-center position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                            class="icon an an-pencil-l an-1x"></i></label>
-                                                    <input type="file" id="thumbUpload2" class="thumb-upload d-none"
-                                                        accept=".png, .jpg, .jpeg" name="pictures">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-sm-3 col-md-2 col-lg-4 thumb-upload">
-                                            <div class="thumb-preview position-relative border p-1">
-                                                <img class="thumb-preview"
-                                                    src="assets/images/vendor/vender-upload-preview.jpg" alt="edit"
-                                                    id="pictures">
-                                                <div class="thumb-edit">
-                                                    <label for="thumbUpload3"
-                                                        class="d-flex-center justify-content-center position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                            class="icon an an-pencil-l an-1x"></i></label>
-                                                    <input type="file" id="thumbUpload3" class="thumb-upload d-none"
-                                                        accept=".png, .jpg, .jpeg" name="pictures">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-sm-3 col-md-2 col-lg-4 thumb-upload">
-                                            <div class="thumb-preview position-relative border p-1">
-                                                <img class="thumb-preview"
-                                                    src="assets/images/vendor/vender-upload-preview.jpg" alt="edit"
-                                                    id="pictures">
-                                                <div class="thumb-edit">
-                                                    <label for="thumbUpload7"
-                                                        class="d-flex-center justify-content-center position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                            class="icon an an-pencil-l an-1x"></i></label>
-                                                    <input type="file" id="thumbUpload7" class="thumb-upload d-none"
-                                                        accept=".png, .jpg, .jpeg" name="pictures">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-sm-3 col-md-2 col-lg-4 thumb-upload">
-                                            <div class="thumb-preview position-relative border p-1">
-                                                <img class="thumb-preview"
-                                                    src="assets/images/vendor/vender-upload-preview.jpg" alt="edit"
-                                                    id="pictures">
-                                                <div class="thumb-edit">
-                                                    <label for="thumbUpload5"
-                                                        class="d-flex-center justify-content-center position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                            class="icon an an-pencil-l an-1x"></i></label>
-                                                    <input type="file" id="thumbUpload5" class="thumb-upload d-none"
-                                                        accept=".png, .jpg, .jpeg" name="pictures">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-4 col-sm-3 col-md-2 col-lg-4 thumb-upload">
-                                            <div class="thumb-preview position-relative border p-1">
-                                                <img class="thumb-preview"
-                                                    src="assets/images/vendor/vender-upload-preview.jpg" alt="edit"
-                                                    id="pictures">
-                                                <div class="thumb-edit">
-                                                    <label for="thumbUpload6"
-                                                        class="d-flex-center justify-content-center position-absolute top-0 end-0 p-2 border-0 rounded-circle shadow btn"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"><i
-                                                            class="icon an an-pencil-l an-1x"></i></label>
-                                                    <input type="file" id="thumbUpload6" class="thumb-upload d-none"
-                                                        accept=".png, .jpg, .jpeg" name="pictures">
-                                                </div>
-                                            </div>
+                                            <input type="file" id="imageUpload1" accept=".png, .jpg, .jpeg"
+                                                name="inpfiles" class="pics pt-2" multiple>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-sm-12 col-md-12 col-lg-8">
-                                <form class="row g-3 vendor-upload-detail">
-                                    <div class="col-md-12">
-                                        <label for="name" class="form-label">Product name</label>
-                                        <input type="text" name="name" class="form-control border border-secondary"
-                                            id="product-name" required>
-                                    </div>
-                                    <div class="col-6 col-md-4">
-                                        <label class="form-label">Price <span>(In USD)</span></label>
-                                        <input type="number" name="price" class="form-control border border-secondary"
-                                            id="price" required>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="form-label">Quantity</label>
-                                        <input type="number" name="quantity"
-                                            class="form-control border border-secondary" id="quantity" required>
-                                    </div>
-                                    <div class="col-md-4 d-flex align-items-center">
-                                        <input type="checkbox" class="border border-secondary" id="instock"
-                                            name="inStock" checked>
-                                        <label class="pt-1 ps-2" for="instock">Instock</label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Product Tags</label>
-                                        <input type="text" name="tags" class="form-control border border-secondary"
-                                            placeholder="" id="inputTag" value="">
-                                        <small class="form-text text-muted">Separate keywords with a comma, space
-                                            bar, or enter key</small>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <label class="form-label">Product description</label>
-                                        <textarea class="form-control border border-secondary" name="description"
-                                            id="description" rows="3"></textarea>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary rounded"
-                                            id="submit">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-
-
                         </div>
+
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+                            <form class="row g-3 vendor-upload-detail" enctype="multipart/form-data">
+                                <!-- <input type="file" name="jide[]" id="" multiple> -->
+                                <div class="col-md-12">
+                                    <label for="name" class="form-label">Product name</label>
+                                    <input type="text" name="name" class="form-control border border-secondary"
+                                        id="product-name" required>
+                                </div>
+                                <div class="col-6 col-md-4">
+                                    <label class="form-label">Price <span>(In USD)</span></label>
+                                    <input type="number" name="price" class="form-control border border-secondary"
+                                        id="price" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Quantity</label>
+                                    <input type="number" name="quantity" class="form-control border border-secondary"
+                                        id="quantity" required>
+                                </div>
+                                <div class="col-md-4 d-flex align-items-center">
+                                    <input type="checkbox" class="border border-secondary" id="instock" name="inStock"
+                                        checked>
+                                    <label class="pt-1 ps-2" for="instock">Instock</label>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Product Tags</label>
+                                    <input type="text" name="tags" class="form-control border border-secondary"
+                                        placeholder="" id="inputTag" value="">
+                                    <small class="form-text text-muted">Separate keywords with a comma, space
+                                        bar, or enter key</small>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Product description</label>
+                                    <textarea class="form-control border border-secondary" name="description"
+                                        id="description" rows="3"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary rounded" id="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
-        <!--End Main Content-->
+    </div>
+    <!--End Main Content-->
     </div>
     <!--End Body Container-->
 
