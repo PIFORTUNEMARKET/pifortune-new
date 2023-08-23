@@ -1,38 +1,41 @@
 const form = document.querySelector(".vendor-upload-detail");
+const imgContainer = document.querySelectorAll("#img-container");
+const imgPreview = document.querySelectorAll("#pictures");
+const inputIcon = document.querySelector(".pics");
+
+inputIcon.addEventListener("change", () => {
+  for (let i = 0; i < inputIcon.files.length; i++) {
+    let reader = new FileReader();
+    reader.readAsDataURL(inputIcon.files[i]);
+    reader.onload = () => {
+      for (let i = 0; i < imgPreview.length; i++) {
+        imgPreview[i].setAttribute("src", reader.result);
+      }
+    };
+  }
+});
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
+  for (let i = 0; i < inputIcon.files.length; i++) {
+    formData.append("pictures", inputIcon.files[i]);
+  }
+  for (item of formData) {
+    console.log(item[0], item[1]);
+  }
 
-  fetch(`${API_URL}`, {
+  fetch(`${API_URL}vendor/post/product`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      Authorization: `Bearer ${vendor}`,
+      "Content-Type":
+        "multipart/form-data; boundary=---WebKitFormBoundary7MA4YWxkTrZu0gW",
     },
-    body: JSON.stringify(data),
+    body: formData,
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((formData) => console.log(formData))
     .catch((error) => console.log(error));
 });
-
-const API_URL_PRODUCT = "http://localhost:4000/api/vendor/post/product";
-
-async function fetchDetails(data) {
-  try {
-    const response = await fetch(`${API_URL_PRODUCT}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-
-    const result = await response.json();
-    console.log("Success:", result);
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
