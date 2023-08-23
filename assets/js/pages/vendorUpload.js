@@ -22,20 +22,47 @@ form.addEventListener("submit", (e) => {
   for (let i = 0; i < inputIcon.files.length; i++) {
     formData.append("pictures", inputIcon.files[i]);
   }
-  for (item of formData) {
-    console.log(item[0], item[1]);
-  }
 
   fetch(`${API_URL}vendor/post/product`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${vendor}`,
-      "Content-Type":
-        "multipart/form-data; boundary=---WebKitFormBoundary7MA4YWxkTrZu0gW",
     },
     body: formData,
   })
     .then((res) => res.json())
-    .then((formData) => console.log(formData))
+    .then((res) => {
+      if (!res.success) {
+        Toastify({
+          text: res.message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "#DC3545",
+          },
+          onClick: function () {},
+        }).showToast();
+      } else {
+        Toastify({
+          text: res.message,
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true,
+          style: {
+            background: "#198754",
+          },
+          onClick: function () {},
+        }).showToast();
+
+        setInterval(() => {
+          window.location.href = "vendor-profile.html";
+        }, 3000);
+      }
+    })
     .catch((error) => console.log(error));
 });
