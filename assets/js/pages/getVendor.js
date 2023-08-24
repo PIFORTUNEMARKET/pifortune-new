@@ -84,7 +84,7 @@ const getUsers = async () => {
           <!--Product Price-->
           <div class="product-price">
               <span class="old-price">$199.00</span>
-              <span class="price">${user.price}</span>
+              <span class="price">₦${user.price}</span>
           </div>
           <!--End Product Price-->
           <!--Product Review-->
