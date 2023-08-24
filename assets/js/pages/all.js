@@ -15,6 +15,8 @@ const isLocalhost = Boolean(
     )
 );
 
+console.log(vendor);
+
 const API_URL = isLocalhost
   ? "http://localhost:4000/api/"
   : "https://pifortune-server.onrender.com/api/";
@@ -26,7 +28,7 @@ if (vendor) {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ token: JSON.parse(vendor) }),
+    body: JSON.stringify({ token: vendor.toString() }),
   })
     .then((res) => res.json())
     .then((res) => {

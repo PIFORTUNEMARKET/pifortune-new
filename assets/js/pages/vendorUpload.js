@@ -19,18 +19,23 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const formData = new FormData(form);
-  const data = Object.fromEntries(formData);
-  data.pictures = inputIcon.files;
+  for (let i = 0; i < inputIcon.files.length; i++) {
+    formData.append("pictures", inputIcon.files[i]);
+  }
+  for (item of formData) {
+    console.log(item[0], item[1]);
+  }
 
   fetch(`${API_URL}vendor/post/product`, {
     method: "POST",
     headers: {
-      "Content-Type": "multipart/form-data",
       Authorization: `Bearer ${vendor}`,
+      "Content-Type":
+        "multipart/form-data; boundary=---WebKitFormBoundary7MA4YWxkTrZu0gW",
     },
-    body: JSON.stringify(data),
+    body: formData,
   })
     .then((res) => res.json())
-    .then((data) => console.log(data))
+    .then((formData) => console.log(formData))
     .catch((error) => console.log(error));
 });
