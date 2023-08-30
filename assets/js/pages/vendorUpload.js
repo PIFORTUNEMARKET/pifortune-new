@@ -2,6 +2,11 @@ const form = document.querySelector(".vendor-upload-detail");
 const imgContainer = document.querySelectorAll("#img-container");
 const imgPreview = document.querySelectorAll("#pictures");
 const inputIcon = document.querySelector(".pics");
+const vendorLogoutBtn = document.querySelector(".vendor-logout-btn");
+
+if (!vendor) {
+  window.location.href = "/";
+}
 
 inputIcon.addEventListener("change", () => {
   for (let i = 0; i < inputIcon.files.length; i++) {
@@ -65,4 +70,9 @@ form.addEventListener("submit", (e) => {
       }
     })
     .catch((error) => console.log(error));
+});
+
+vendorLogoutBtn.addEventListener("click", (e) => {
+  localStorage.removeItem("vendor");
+  window.location.reload();
 });
