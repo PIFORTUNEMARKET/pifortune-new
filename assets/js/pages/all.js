@@ -5,6 +5,7 @@ const userAccount = document.querySelector(".user-account");
 const vendorAccount = document.querySelector(".vendor-account");
 const authenticatedUser = document.querySelector(".authenticated-user");
 const authenticatedVendor = document.querySelector(".authenticated-vendor");
+const logoutBtn = document.querySelector(".logout-btn");
 
 //check if app is in development or production
 const isLocalhost = Boolean(
@@ -97,4 +98,16 @@ userAccount.addEventListener("click", async () => {
 
   authenticatedUser.textContent = `Hi ${savedUser.userName}`;
   userAccount.style.display = "none";
+});
+
+if (user || vendor) {
+  logoutBtn.style.display = "block";
+} else {
+  logoutBtn.style.display = "none";
+}
+
+logoutBtn.addEventListener("click", (e) => {
+  localStorage.removeItem("vendor");
+  localStorage.removeItem("user");
+  window.location.reload();
 });
