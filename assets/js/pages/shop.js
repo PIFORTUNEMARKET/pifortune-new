@@ -126,7 +126,6 @@ const getUsers = async () => {
       <!--End Product Details-->
   </div>
       `;
-      console.log(user);
       let count = document.getElementById("count");
       count.innerHTML = newData.length;
     });
