@@ -1,3 +1,6 @@
+const itemsLoadMore = document.getElementById("items-load-more");
+const items = document.getElementById("items");
+
 const getUsers = async () => {
   try {
     const res = await fetch(`${API_URL}vendor/getvendorproducts`, {
@@ -8,10 +11,10 @@ const getUsers = async () => {
     const data = await res.json();
     const newData = data.data;
     let products = "";
-    newData.map((user) => {
-      let theFirstPic = user.pictures.split(";")[0];
-      console.log(user);
-      console.log(theFirstPic);
+    newData.map((eachProduct) => {
+      let theFirstPic = eachProduct.pictures.split(";")[0];
+      let theSecondPic = eachProduct.pictures.split(";")[1];
+      console.log(theSecondPic);
       products += `<div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
       <!--Start Product Image-->
       <div class="product-image">
@@ -20,14 +23,14 @@ const getUsers = async () => {
               <!-- image -->
               <img class="primary blur-up lazyload"
                   data-src="${theFirstPic}"
-                  src="assets/images/products/product-1-1.jpg"
-                  alt="image" title="">
+                  src="${theFirstPic}"
+                  alt="${eachProduct.name}" title="">
               <!-- End image -->
               <!-- Hover image -->
               <img class="hover blur-up lazyload"
-                  data-src="assets/images/products/product-1-1.jpg"
-                  src="assets/images/products/product-1-1.jpg"
-                  alt="image" title="">
+                  data-src="${theSecondPic ? theSecondPic : theFirstPic}"
+                  src="${theSecondPic ? theSecondPic : theFirstPic}"
+                  alt="${eachProduct.name}" title="">
               <!-- End hover image -->
           </a>
           <!--End Product Image-->
@@ -78,13 +81,15 @@ const getUsers = async () => {
       <div class="product-details text-center">
           <!--Product Name-->
           <div class="product-name text-uppercase">
-              <a href="product-layout1.html">${user.name}</a>
+              <a href="product-layout1.html">${eachProduct.name}</a>
           </div>
           <!--End Product Name-->
           <!--Product Price-->
           <div class="product-price">
-              <span class="old-price">$199.00</span>
-              <span class="price">₦${user.price}</span>
+              <span class="old-price">₦${
+                eachProduct.price - 0.2 * eachProduct.price
+              }</span>
+              <span class="price">₦${eachProduct.price}</span>
           </div>
           <!--End Product Price-->
           <!--Product Review-->
@@ -102,22 +107,6 @@ const getUsers = async () => {
               has been the industry's standard dummy text ever since
               the 1500s specimen book...</p>
           <!--End Sort Description-->
-          <!--Color Variant -->
-          <ul class="image-swatches swatches">
-              <li class="radius blue medium"><span
-                      class="swacth-btn"></span><span
-                      class="tooltip-label">Blue</span></li>
-              <li class="radius pink medium"><span
-                      class="swacth-btn"></span><span
-                      class="tooltip-label">Pink</span></li>
-              <li class="radius red medium"><span
-                      class="swacth-btn"></span><span
-                      class="tooltip-label">Red</span></li>
-              <li class="radius yellow medium"><span
-                      class="swacth-btn"></span><span
-                      class="tooltip-label">Yellow</span></li>
-          </ul>
-          <!--End Color Variant-->
           <!-- Product Button -->
           <div class="button-action d-flex">
               <div class="addtocart-btn">
@@ -157,7 +146,7 @@ const getUsers = async () => {
   </div>`;
     });
 
-    document.getElementById("items").innerHTML = products;
+    items.innerHTML = products;
   } catch (error) {
     console.log(error);
   }

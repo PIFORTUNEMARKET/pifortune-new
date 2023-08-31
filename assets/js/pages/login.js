@@ -41,7 +41,6 @@ customerForm.addEventListener("submit", (e) => {
           onClick: function () {},
         }).showToast();
       } else {
-        console.log(res);
         Toastify({
           text: res.message,
           duration: 3000,
