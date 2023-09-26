@@ -1,21 +1,23 @@
-const itemsLoadMore = document.getElementById("items-load-more");
-const items = document.getElementById("items");
-
-const getUsers = async () => {
+const allGetVendor = () => {
   try {
-    const res = await fetch(`${API_URL}vendor/getvendorproducts`, {
-      headers: {
-        Authorization: `Bearer ${vendor}`,
-      },
-    });
-    const data = await res.json();
-    const newData = data.data;
-    let products = "";
-    newData.map((eachProduct) => {
-      let theFirstPic = eachProduct.pictures.split(";")[0];
-      let theSecondPic = eachProduct.pictures.split(";")[1];
-      console.log(theSecondPic);
-      products += `<div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
+    const itemsLoadMore = document.getElementById("items-load-more");
+    const items = document.getElementById("items");
+
+    const getUsers = async () => {
+      try {
+        const res = await fetch(`${API_URL}vendor/getvendorproducts`, {
+          headers: {
+            Authorization: `Bearer ${vendor}`,
+          },
+        });
+        const data = await res.json();
+        const newData = data.data;
+        let products = "";
+        newData.map((eachProduct) => {
+          let theFirstPic = eachProduct.pictures.split(";")[0];
+          let theSecondPic = eachProduct.pictures.split(";")[1];
+          console.log(theSecondPic);
+          products += `<div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
       <!--Start Product Image-->
       <div class="product-image">
           <!--Start Product Image-->
@@ -144,12 +146,18 @@ const getUsers = async () => {
       </div>
       <!--End Product Details-->
   </div>`;
-    });
+        });
 
-    items.innerHTML = products;
+        items.innerHTML = products;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getUsers();
   } catch (error) {
     console.log(error);
   }
 };
 
-getUsers();
+allGetVendor();
