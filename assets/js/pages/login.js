@@ -11,7 +11,7 @@ const allLogin = () => {
         )
     );
 
-    const API_URL = isLocalhost
+    let API_URL = isLocalhost
       ? "http://localhost:4000/api/"
       : "https://pifortune-server.onrender.com/api/";
 

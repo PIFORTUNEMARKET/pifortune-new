@@ -1,7 +1,7 @@
 const allRegister = () => {
   try {
-    const user = localStorage.getItem("user");
-    const vendor = localStorage.getItem("vendor");
+    let user = localStorage.getItem("user");
+    let vendor = localStorage.getItem("vendor");
 
     //if a user / vendor is logged in, the register vendor page can not be accessed
     if (user || vendor) window.location.replace("/");
