@@ -29,6 +29,7 @@ const allGetVendor = () => {
         const newData = data.data;
         let products = "";
         newData.map((eachProduct) => {
+          console.log(eachProduct);
           let theFirstPic = eachProduct.pictures.split(";")[0];
           let theSecondPic = eachProduct.pictures.split(";")[1];
           console.log(theSecondPic);
@@ -36,7 +37,9 @@ const allGetVendor = () => {
       <!--Start Product Image-->
       <div class="product-image">
           <!--Start Product Image-->
-          <a href="product-layout1.html" class="product-img">
+          <a href="product-layout1.html?id=${
+            eachProduct.id
+          }" class="product-img">
               <!-- image -->
               <img class="primary blur-up lazyload"
                   data-src="${theFirstPic}"
