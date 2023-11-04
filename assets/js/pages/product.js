@@ -1,6 +1,21 @@
 try {
-  const params = new URLSearchParams(location.search);
-  const id = Number(params.get("id"));
+  const params = new URLSearchParams(location.search)
+  const id = Number(params.get("id"))
+
+  const approve = document.getElementsByClassName("approve")[0]
+  const cancel = document.getElementsByClassName("cancel")[0]
+  const productTitle = document.getElementsByClassName(
+    "product-single__title"
+  )[0]
+  const productPrice = document.getElementsByClassName(
+    "product-price__price product-price__sale"
+  )[0]
+  const images = document.getElementsByClassName("zoompro")[0]
+  const descriptionText = document.getElementsByClassName("description-text")[0]
+  const title = document.getElementsByClassName("collection-hero__title")[0]
+  const itemQuantity = document.getElementsByClassName("bold-item")[0]
+  const gallery = document.getElementById("gallery")
+  console.log(gallery)
 
   //check if app is in development or production
   const isLocalhost = Boolean(
@@ -9,20 +24,82 @@ try {
       window.location.hostname.match(
         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
       )
-  );
+  )
 
   const API_URL = isLocalhost
     ? "http://localhost:4000/api/"
-    : "https://pifortune-server.onrender.com/api/";
+    : "https://pifortune-server.onrender.com/api/"
 
   const getProduct = async () => {
-    const res = await fetch(`${API_URL}product/get/${id}`);
-    const data = await res.json();
+    const items = document.getElementById("items")
 
-    console.log(data);
-  };
+    const res = await fetch(`${API_URL}product/get/${id}`)
+    const data = await res.json()
+    const newData = data.data
+    console.log(newData)
 
-  getProduct();
+    const {
+      VendorId,
+      createdAt,
+      description,
+      id: uid,
+      inStock,
+      name,
+      pictures,
+      price,
+      quantity,
+      tags,
+      updatedAt,
+      vendorId
+    } = newData
+
+    let firstImage = pictures.split(";")[0]
+    let allImages = pictures.split(";")
+
+    let productImages = ""
+
+    allImages.map(eachPicture => {
+      productImages += `
+            <a data-image=${eachPicture}
+    data-zoom-image=${eachPicture}
+    class="slick-slide slick-cloned">
+    <img class="blur-up lazyload"
+        data-src=${eachPicture}
+        src=${eachPicture} />
+</a>        
+        `
+    })
+
+    gallery.innerHTML = productImages
+
+    // console.log(images)
+
+    // console.log(firstImage)
+    productTitle.textContent = name
+    productPrice.textContent = price
+    descriptionText.textContent = description
+    title.textContent = name
+
+    // images.setAttribute("src", firstImage)
+    // itemQuantity.textContent = quantity
+    // if (inStock === true) {
+    //   approve.style.display = "block"
+    //   cancel.style.display = "none"
+    // } else {
+    //   approve.style.display = "none"
+    //   cancel.style.display = "block"
+    // }
+
+    //     <a data-image="assets/images/products/product-detail1.jpg"
+    //     data-zoom-image="assets/images/products/product-detail1.jpg"
+    //     class="slick-slide slick-cloned">
+    //     <img class="blur-up lazyload"
+    //         data-src="assets/images/products/product-detail1.jpg"
+    //         src="assets/images/products/product-detail1.jpg" alt="product" />
+    // </a>
+  }
+
+  getProduct()
 } catch (error) {
-  console.log(error);
+  console.log(error)
 }

@@ -5,34 +5,34 @@ const isLocalhost = Boolean(
     window.location.hostname.match(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
     )
-);
+)
 
 const API_URL = isLocalhost
   ? "http://localhost:4000/api/"
-  : "https://pifortune-server.onrender.com/api/";
+  : "https://pifortune-server.onrender.com/api/"
 
-let vendor = localStorage.getItem("vendor");
+let vendor = localStorage.getItem("vendor")
 
 const allGetVendor = () => {
   try {
-    const itemsLoadMore = document.getElementById("items-load-more");
-    const items = document.getElementById("items");
+    const itemsLoadMore = document.getElementById("items-load-more")
+    const items = document.getElementById("items")
 
     const getUsers = async () => {
       try {
         const res = await fetch(`${API_URL}vendor/getvendorproducts`, {
           headers: {
-            Authorization: `Bearer ${vendor}`,
-          },
-        });
-        const data = await res.json();
-        const newData = data.data;
-        let products = "";
-        newData.map((eachProduct) => {
-          console.log(eachProduct);
-          let theFirstPic = eachProduct.pictures.split(";")[0];
-          let theSecondPic = eachProduct.pictures.split(";")[1];
-          console.log(theSecondPic);
+            Authorization: `Bearer ${vendor}`
+          }
+        })
+        const data = await res.json()
+        const newData = data.data
+        let products = ""
+        newData.map(eachProduct => {
+          console.log(eachProduct)
+          let theFirstPic = eachProduct.pictures.split(";")[0]
+          let theSecondPic = eachProduct.pictures.split(";")[1]
+          console.log(theSecondPic)
           products += `<div class="col-6 col-sm-6 col-md-4 col-lg-3 item">
       <!--Start Product Image-->
       <div class="product-image">
@@ -163,19 +163,19 @@ const allGetVendor = () => {
           <!-- End Product Button -->
       </div>
       <!--End Product Details-->
-  </div>`;
-        });
+  </div>`
+        })
 
-        items.innerHTML = products;
+        items.innerHTML = products
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
+    }
 
-    getUsers();
+    getUsers()
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
-allGetVendor();
+allGetVendor()

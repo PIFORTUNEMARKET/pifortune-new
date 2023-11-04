@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="assets/images/favicon.png" />
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/css/plugins.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/responsive.css" />
@@ -941,7 +942,7 @@
                                     <p class="m-0"><strong class="items">8</strong> Sold in last <strong
                                             class="time">14</strong> hours</p>
                                     <p id="quantity_message" class="ms-2 ps-2 border-start">Hurry! Only <span
-                                            class="items fw-bold">4</span> left in stock.</p>
+                                            class="items fw-bold bold-item">4</span> left in stock.</p>
                                 </div>
                                 <!-- End Product Sold -->
                             </div>
@@ -1024,7 +1025,9 @@
                                         </div>
                                         <div class="pro-stockLbl ms-3">
                                             <span class="d-flex-center stockLbl instock"><i
-                                                    class="icon an an-check-cil"></i><span> In stock</span></span>
+                                                    class="icon an an-check-cil approve"></i><i
+                                                    class="far fa-times-circle fa-lg cancel" style="color:red"></i>
+                                                <span> In stock</span></span>
                                             <span class="d-flex-center stockLbl preorder d-none"><i
                                                     class="icon an an-clock-r"></i><span> Pre-order Now</span></span>
                                             <span class="d-flex-center stockLbl outstock d-none"><i
@@ -1147,7 +1150,8 @@
                             <div class="product-description">
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-8 col-lg-8 mb-4 mb-md-0">
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                        <p class="description-text">Lorem Ipsum is simply dummy text of the printing and
+                                            typesetting industry.
                                             Lorem Ipsum has been the industry's standard dummy text ever since the
                                             1500s, when an unknown printer took a galley of type and scrambled it to
                                             make a type specimen book.</p>
@@ -3170,6 +3174,7 @@
 
     </div>
     <!--End Page Wrapper-->
+    <script src="assets/js/pages/product.js"></script>
 </body>
 
 </html>
