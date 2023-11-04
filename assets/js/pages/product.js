@@ -7,6 +7,7 @@ try {
   const productTitle = document.getElementsByClassName(
     "product-single__title"
   )[0]
+  const productName = document.getElementsByClassName("product-name")[0]
   const productPrice = document.getElementsByClassName(
     "product-price__price product-price__sale"
   )[0]
@@ -15,7 +16,7 @@ try {
   const title = document.getElementsByClassName("collection-hero__title")[0]
   const itemQuantity = document.getElementsByClassName("bold-item")[0]
   const gallery = document.getElementById("gallery")
-  console.log(gallery)
+  const anotherGallery = document.getElementsByClassName("gallery")
 
   //check if app is in development or production
   const isLocalhost = Boolean(
@@ -53,7 +54,6 @@ try {
       vendorId
     } = newData
 
-    let firstImage = pictures.split(";")[0]
     let allImages = pictures.split(";")
 
     let productImages = ""
@@ -72,31 +72,24 @@ try {
 
     gallery.innerHTML = productImages
 
-    // console.log(images)
+    gallery.addEventListener("click", e => {
+      target = e.target.src
+      images.setAttribute("src", target)
+    })
 
-    // console.log(firstImage)
+    productName.textContent = name
     productTitle.textContent = name
     productPrice.textContent = price
     descriptionText.textContent = description
     title.textContent = name
-
-    // images.setAttribute("src", firstImage)
-    // itemQuantity.textContent = quantity
-    // if (inStock === true) {
-    //   approve.style.display = "block"
-    //   cancel.style.display = "none"
-    // } else {
-    //   approve.style.display = "none"
-    //   cancel.style.display = "block"
-    // }
-
-    //     <a data-image="assets/images/products/product-detail1.jpg"
-    //     data-zoom-image="assets/images/products/product-detail1.jpg"
-    //     class="slick-slide slick-cloned">
-    //     <img class="blur-up lazyload"
-    //         data-src="assets/images/products/product-detail1.jpg"
-    //         src="assets/images/products/product-detail1.jpg" alt="product" />
-    // </a>
+    itemQuantity.textContent = quantity
+    if (inStock === true) {
+      approve.style.display = "block"
+      cancel.style.display = "none"
+    } else {
+      approve.style.display = "none"
+      cancel.style.display = "block"
+    }
   }
 
   getProduct()
