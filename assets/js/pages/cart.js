@@ -1,62 +1,63 @@
-const removeCartItemBtn = document.getElementsByClassName("cart__remove")
-const cartItemContainer = document.getElementsByClassName("cart-items")[0]
+const removeCartItemBtn = document.getElementsByClassName("cart__remove");
+const cartItemContainer = document.getElementsByClassName("cart-items")[0];
 // const mainPriceElement = document.getElementsByClassName("money")[1];
-const minusElement = document.getElementsByClassName("cart-minus")
-const plusElement = document.getElementsByClassName("addition")
-let quantityInputs = document.querySelectorAll(".cart__qty-input")
-let cartRows = document.getElementsByClassName("cart__row")
-let priceElement = document.getElementsByClassName("cart-money")
-let totalPrice = document.getElementsByClassName("total-money")
-let subTotal = document.getElementsByClassName("subtotal-money")[0]
+const minusElement = document.getElementsByClassName("cart-minus");
+const plusElement = document.getElementsByClassName("addition");
+let quantityInputs = document.querySelectorAll(".cart__qty-input");
+let cartRows = document.getElementsByClassName("cart__row");
+let priceElement = document.getElementsByClassName("cart-money");
+let totalPrice = document.getElementsByClassName("total-money");
+let subTotal = document.getElementsByClassName("subtotal-money")[0];
+let checkOut = document.getElementById("cartCheckout");
 
 for (let i = 0; i < cartRows.length; i++) {
-  let price = parseFloat(priceElement[i].innerText.replace("$", ""))
-  let inputValue = Number(quantityInputs[i].value)
-  let newSubTotal = price * inputValue
+  let price = parseFloat(priceElement[i].innerText.replace("$", ""));
+  let inputValue = Number(quantityInputs[i].value);
+  let newSubTotal = price * inputValue;
 
-  totalPrice[i].innerText = `$${newSubTotal.toFixed(2)}`
+  totalPrice[i].innerText = `$${newSubTotal.toFixed(2)}`;
   // const subTotal = newTotalPrice.map(x => x.item).reduce((x, y) => x + y, 0)
   // console.log(subTotal)
 
   plusElement[i].addEventListener("click", function (e) {
-    let sum = 0
-    inputValue += 1
-    newValue = inputValue
-    quantityInputs[i].value = newValue
-    let calc = newValue * price
-    totalPrice[i].innerText = `$${calc.toFixed(2)}`
-    let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""))
+    let sum = 0;
+    inputValue += 1;
+    newValue = inputValue;
+    quantityInputs[i].value = newValue;
+    let calc = newValue * price;
+    totalPrice[i].innerText = `$${calc.toFixed(2)}`;
+    let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""));
     // sum += combinedPrice
     // subTotal.innerText = sum
-    console.log((sum += combinedPrice))
-  })
+    console.log((sum += combinedPrice));
+  });
 
   minusElement[i].addEventListener("click", function (e) {
-    let sum = 0
+    let sum = 0;
     if (newValue <= 1) {
-      inputValue = 1
-      newValue = inputValue
+      inputValue = 1;
+      newValue = inputValue;
     } else {
-      newValue = inputValue--
-      quantityInputs[i].value = newValue
-      let calc = newValue * price
+      newValue = inputValue--;
+      quantityInputs[i].value = newValue;
+      let calc = newValue * price;
       // console.log(calc)
-      totalPrice[i].innerText = `$${calc.toFixed(2)}`
-      let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""))
-      sum += combinedPrice
-      subTotal.innerText = sum
+      totalPrice[i].innerText = `$${calc.toFixed(2)}`;
+      let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""));
+      sum += combinedPrice;
+      subTotal.innerText = sum;
       // console.log(sum)
     }
-    console.log(totalPrice[i])
-  })
+    console.log(totalPrice[i]);
+  });
 }
 
 for (let i = 0; i < removeCartItemBtn.length; i++) {
-  const button = removeCartItemBtn[i]
-  button.addEventListener("click", e => {
-    let btnClicked = e.target
-    btnClicked.parentElement.parentElement.parentElement.remove()
-  })
+  const button = removeCartItemBtn[i];
+  button.addEventListener("click", (e) => {
+    let btnClicked = e.target;
+    btnClicked.parentElement.parentElement.parentElement.remove();
+  });
 }
 
 // for (let i = 0; i < quantityInputs.length; i++) {
@@ -125,3 +126,46 @@ for (let i = 0; i < removeCartItemBtn.length; i++) {
 // }
 //   })
 // }
+
+let requiredPayment = parseFloat(subTotal.innerHTML.replace("$", ""));
+
+checkOut.addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  console.log("here");
+
+  await window.Pi.createPayment(
+    {
+      // Amount of π to be paid:
+      amount: 0.1,
+      // An explanation of the payment - will be shown to the user:
+      memo: "...", // e.g: "Digital kitten #1234",
+      // An arbitrary developer-provided metadata object - for your own usage:
+      metadata: {
+        /* ... */
+      }, // e.g: { kittenId: 1234 }
+    },
+    {
+      // Callbacks you need to implement - read more about those in the detailed docs linked below:
+      onReadyForServerApproval: function (paymentId) {
+        console.log(paymentId);
+        /* ... */
+      },
+      onReadyForServerCompletion: function (paymentId, txid) {
+        console.log(paymentId);
+        console.log(txid);
+        /* ... */
+      },
+      onCancel: function (paymentId) {
+        console.log(paymentId);
+
+        /* ... */
+      },
+      onError: function (error, payment) {
+        console.log(error);
+        console.log(payment);
+        /* ... */
+      },
+    }
+  );
+});
