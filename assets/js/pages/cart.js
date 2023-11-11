@@ -8,6 +8,8 @@ let cartRows = document.getElementsByClassName("cart__row")
 let priceElement = document.getElementsByClassName("cart-money")
 let totalPrice = document.getElementsByClassName("total-money")
 let subTotal = document.getElementsByClassName("subtotal-money")[0]
+let clearCart = document.getElementsByClassName("clear")[0]
+let emptyCartText = document.getElementsByClassName("empty-cart-text")[0]
 
 for (let i = 0; i < cartRows.length; i++) {
   let price = parseFloat(priceElement[i].innerText.replace("$", ""))
@@ -28,7 +30,7 @@ for (let i = 0; i < cartRows.length; i++) {
     let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""))
     // sum += combinedPrice
     // subTotal.innerText = sum
-    console.log((sum += combinedPrice))
+    // console.log((sum += combinedPrice))
   })
 
   minusElement[i].addEventListener("click", function (e) {
@@ -43,8 +45,8 @@ for (let i = 0; i < cartRows.length; i++) {
       // console.log(calc)
       totalPrice[i].innerText = `$${calc.toFixed(2)}`
       let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""))
-      sum += combinedPrice
-      subTotal.innerText = sum
+      // sum += combinedPrice
+      // subTotal.innerText = sum
       // console.log(sum)
     }
     console.log(totalPrice[i])
@@ -58,6 +60,12 @@ for (let i = 0; i < removeCartItemBtn.length; i++) {
     btnClicked.parentElement.parentElement.parentElement.remove()
   })
 }
+
+clearCart.addEventListener("click", e => {
+  e.preventDefault()
+  cartItemContainer.remove()
+  emptyCartText.setAttribute("class", "d-block")
+})
 
 // for (let i = 0; i < quantityInputs.length; i++) {
 //   let input = quantityInputs[i]
