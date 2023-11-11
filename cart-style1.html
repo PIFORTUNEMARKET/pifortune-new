@@ -826,7 +826,7 @@
 
                         <form action="#" method="post" class="cart style2">
                             <table class="align-middle">
-                                <thead class="cart__row cart__header small--hide">
+                                <thead class="cart__row_next cart__header small--hide">
                                     <tr>
                                         <th class="action">&nbsp;</th>
                                         <th colspan="2" class="text-start">Product</th>
@@ -835,8 +835,8 @@
                                         <th class="text-center">Total</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="cart__row border-bottom line1 cart-flex border-top">
+                                <tbody class="cart-items" id="cart-items">
+                                    <tr class="cart__row border-bottom line1 cart-flex border-top" id="cart__row">
                                         <td class="cart-delete text-center small--hide"><a href="#"
                                                 class="btn btn--secondary cart__remove remove-icon position-static"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
@@ -859,16 +859,16 @@
                                             </div>
                                         </td>
                                         <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                            <span class="money">$99.00</span>
+                                            <span class="money cart-money">$99.00</span>
                                         </td>
                                         <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
                                             <div class="cart__qty d-flex justify-content-end justify-content-md-center">
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);"><i
                                                             class="icon an an-minus-r"></i></a>
                                                     <input class="cart__qty-input qty" type="text" name="updates[]"
                                                         value="1" pattern="[0-9]*" />
-                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn plus addition" href="javascript:void(0);"><i
                                                             class="icon an an-plus-r"></i></a>
                                                 </div>
                                             </div>
@@ -876,10 +876,10 @@
                                                 class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
                                         </td>
                                         <td class="cart-price cart-flex-item text-center small--hide">
-                                            <span class="money fw-500">$297.00</span>
+                                            <span class="total-money fw-500">$297.00</span>
                                         </td>
                                     </tr>
-                                    <tr class="cart__row border-bottom line1 cart-flex">
+                                    <tr class="cart__row border-bottom line1 cart-flex" id="cart__row">
                                         <td class="cart-delete text-center small--hide"><a href="#"
                                                 class="btn btn--secondary cart__remove remove-icon position-static"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
@@ -902,16 +902,16 @@
                                             </div>
                                         </td>
                                         <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                            <span class="money">$128.00</span>
+                                            <span class="money cart-money">$128.00</span>
                                         </td>
                                         <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
                                             <div class="cart__qty d-flex justify-content-end justify-content-md-center">
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);"><i
                                                             class="icon an an-minus-r"></i></a>
                                                     <input class="cart__qty-input qty" type="text" name="updates[]"
                                                         value="1" pattern="[0-9]*" />
-                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn plus addition" href="javascript:void(0);"><i
                                                             class="icon an an-plus-r"></i></a>
                                                 </div>
                                             </div>
@@ -919,10 +919,10 @@
                                                 class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
                                         </td>
                                         <td class="cart-price cart-flex-item text-center small--hide">
-                                            <span class="money fw-500">$128.00</span>
+                                            <span class="total-money fw-500">$128.00</span>
                                         </td>
                                     </tr>
-                                    <tr class="cart__row border-bottom line1 cart-flex">
+                                    <tr class="cart__row border-bottom line1 cart-flex" id="cart__row">
                                         <td class="cart-delete text-center small--hide"><a href="#"
                                                 class="btn btn--secondary cart__remove remove-icon position-static"
                                                 data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
@@ -945,16 +945,16 @@
                                             </div>
                                         </td>
                                         <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                            <span class="money">$350.00</span>
+                                            <span class="money cart-money">$350.00</span>
                                         </td>
                                         <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
                                             <div class="cart__qty d-flex justify-content-end justify-content-md-center">
                                                 <div class="qtyField">
-                                                    <a class="qtyBtn minus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);"><i
                                                             class="icon an an-minus-r"></i></a>
                                                     <input class="cart__qty-input qty" type="text" name="updates[]"
                                                         value="1" pattern="[0-9]*" />
-                                                    <a class="qtyBtn plus" href="javascript:void(0);"><i
+                                                    <a class="qtyBtn plus addition" href="javascript:void(0);"><i
                                                             class="icon an an-plus-r"></i></a>
                                                 </div>
                                             </div>
@@ -962,7 +962,7 @@
                                                 class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
                                         </td>
                                         <td class="cart-price cart-flex-item text-center small--hide">
-                                            <span class="money fw-500">$350.00</span>
+                                            <span class="total-money fw-500">$350.00</span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1391,7 +1391,7 @@
                                 <div class="row">
                                     <span class="col-6 col-sm-6 cart__subtotal-title"><strong>Subtotal</strong></span>
                                     <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-end"><span
-                                            class="money">$735.00</span></span>
+                                            class="money subtotal-money">$735.00</span></span>
                                 </div>
                                 <p class="cart__shipping m-0">Shipping &amp; taxes calculated at checkout</p>
                                 <p class="cart__shipping pt-0 m-0 fst-normal freeShipclaim"><i
@@ -1631,7 +1631,7 @@
         <!--Including Javascript-->
         <script src="assets/js/plugins.js"></script>
         <script src="assets/js/main.js"></script>
-
+        <script src="assets/js/pages/cart.js" async></script>
     </div>
     <!--End Page Wrapper-->
 </body>
