@@ -1,6 +1,6 @@
 const removeCartItemBtn = document.getElementsByClassName("cart__remove")
 const cartItemContainer = document.getElementsByClassName("cart-items")[0]
-// const mainPriceElement = document.getElementsByClassName("money")[1];
+const itemContainer = document.getElementById("cart-items")
 const minusElement = document.getElementsByClassName("cart-minus")
 const plusElement = document.getElementsByClassName("addition")
 let quantityInputs = document.querySelectorAll(".cart__qty-input")
@@ -51,6 +51,11 @@ for (let i = 0; i < cartRows.length; i++) {
     }
     console.log(totalPrice[i])
   })
+}
+
+if (itemContainer.children.length === 0) {
+  cartItemContainer.remove()
+  emptyCartText.setAttribute("class", "d-block")
 }
 
 for (let i = 0; i < removeCartItemBtn.length; i++) {
