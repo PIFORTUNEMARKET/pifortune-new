@@ -53,6 +53,8 @@ try {
       vendorId
     } = newData
 
+    localStorage.setItem("id", JSON.stringify(id))
+
     let firstImage = pictures.split(";")[0]
     let allImages = pictures.split(";")
 

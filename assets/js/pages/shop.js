@@ -1,11 +1,14 @@
 const getUsers = async () => {
   try {
-    const res = await fetch(`${API_URL}get/all/products`);
-    const data = await res.json();
-    const newData = data.data;
-    let products = "";
-    newData.map((user) => {
-      let theFirstPic = user.pictures.split(";")[0];
+    const items = document.getElementById("items")
+
+    const res = await fetch(`${API_URL}get/all/products`)
+    const data = await res.json()
+    const newData = data.data
+    console.log
+    let products = ""
+    newData.map(user => {
+      let theFirstPic = user.pictures.split(";")[0]
       products += `<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2 item">
       <!--Start Product Image-->
       <div class="product-image">
@@ -125,14 +128,14 @@ const getUsers = async () => {
       </div>
       <!--End Product Details-->
   </div>
-      `;
-      let count = document.getElementById("count");
-      count.innerHTML = newData.length;
-    });
-    document.getElementById("items").innerHTML = products;
+      `
+      let count = document.getElementById("count")
+      count.innerHTML = newData.length
+    })
+    items.innerHTML = products
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
-};
+}
 
-getUsers();
+getUsers()
