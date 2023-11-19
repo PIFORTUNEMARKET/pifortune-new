@@ -58,6 +58,8 @@ try {
       onIncompletePaymentFound
     );
 
+    console.log(authResult);
+
     fetch(`${API_URL}user/auth/register`, {
       method: "POST",
       headers: {
