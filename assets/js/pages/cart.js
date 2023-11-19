@@ -1,6 +1,7 @@
 const removeCartItemBtn = document.getElementsByClassName("cart__remove");
 const cartItemContainer = document.getElementsByClassName("cart-items")[0];
 const itemContainer = document.getElementById("cart-items");
+// const mainPriceElement = document.getElementsByClassName("money")[1];
 const minusElement = document.getElementsByClassName("cart-minus");
 const plusElement = document.getElementsByClassName("addition");
 let quantityInputs = document.querySelectorAll(".cart__qty-input");
