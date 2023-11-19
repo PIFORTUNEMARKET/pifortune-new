@@ -1,6 +1,6 @@
 const removeCartItemBtn = document.getElementsByClassName("cart__remove");
 const cartItemContainer = document.getElementsByClassName("cart-items")[0];
-// const mainPriceElement = document.getElementsByClassName("money")[1];
+const itemContainer = document.getElementById("cart-items");
 const minusElement = document.getElementsByClassName("cart-minus");
 const plusElement = document.getElementsByClassName("addition");
 let quantityInputs = document.querySelectorAll(".cart__qty-input");
@@ -18,6 +18,8 @@ const accessToken =
   "sr7atpu0b5cfytp6gj0katmdsthnksrkepzamtddlwyzld5uxjmhdbgdbq8uqdue";
 
 console.log(accessToken);
+const clearCart = document.getElementsByClassName("clear")[0];
+const emptyCartText = document.getElementsByClassName("empty-cart-text")[0];
 
 for (let i = 0; i < cartRows.length; i++) {
   let price = parseFloat(priceElement[i].innerText.replace("$", ""));
@@ -25,40 +27,42 @@ for (let i = 0; i < cartRows.length; i++) {
   let newSubTotal = price * inputValue;
 
   totalPrice[i].innerText = `$${newSubTotal.toFixed(2)}`;
-  // const subTotal = newTotalPrice.map(x => x.item).reduce((x, y) => x + y, 0)
-  // console.log(subTotal)
+
+  updateCartTotal();
 
   plusElement[i].addEventListener("click", function (e) {
-    let sum = 0;
     inputValue += 1;
-    newValue = inputValue;
-    quantityInputs[i].value = newValue;
-    let calc = newValue * price;
+    quantityInputs[i].value = inputValue;
+    let calc = inputValue * price;
     totalPrice[i].innerText = `$${calc.toFixed(2)}`;
-    let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""));
-    // sum += combinedPrice
-    // subTotal.innerText = sum
-    console.log((sum += combinedPrice));
+    updateCartTotal();
   });
 
   minusElement[i].addEventListener("click", function (e) {
-    let sum = 0;
-    if (newValue <= 1) {
+    if (inputValue <= 1) {
       inputValue = 1;
-      newValue = inputValue;
     } else {
-      newValue = inputValue--;
-      quantityInputs[i].value = newValue;
-      let calc = newValue * price;
-      // console.log(calc)
-      totalPrice[i].innerText = `$${calc.toFixed(2)}`;
-      let combinedPrice = parseFloat(totalPrice[i].innerText.replace("$", ""));
-      sum += combinedPrice;
-      subTotal.innerText = sum;
-      // console.log(sum)
+      inputValue--;
     }
-    console.log(totalPrice[i]);
+    quantityInputs[i].value = inputValue;
+    let calc = inputValue * price;
+    totalPrice[i].innerText = `$${calc.toFixed(2)}`;
+    updateCartTotal();
   });
+}
+
+function updateCartTotal() {
+  let sum = 0;
+  for (let i = 0; i < totalPrice.length; i++) {
+    let totalPriceValue = parseFloat(totalPrice[i].innerText.replace("$", ""));
+    sum += totalPriceValue;
+  }
+  subTotal.innerText = "$" + sum.toFixed(2);
+}
+
+if (itemContainer.children.length === 0) {
+  cartItemContainer.remove();
+  emptyCartText.setAttribute("class", "d-block");
 }
 
 for (let i = 0; i < removeCartItemBtn.length; i++) {
@@ -238,4 +242,9 @@ checkOut.addEventListener("click", async (e) => {
     });
 
   console.log(authResult);
+});
+clearCart.addEventListener("click", (e) => {
+  e.preventDefault();
+  cartItemContainer.remove();
+  emptyCartText.setAttribute("class", "d-block");
 });
