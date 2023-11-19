@@ -1,6 +1,10 @@
 const addToCartBtn = document.getElementsByClassName(
   "product-form__cart-submit"
 )[0]
+const cartIcon = document.getElementsByClassName("header-cart")[0]
+console.log(cartIcon)
+const cartCount = document.getElementsByClassName("site-cart-count")[0]
+console.log(cartCount)
 
 //check if app is in development or production
 const isLocalhost = Boolean(
@@ -39,7 +43,8 @@ const itemCart = async id => {
 
       localStorage.setItem("cart", JSON.stringify(cart))
 
-      console.log("Item added to cart:", newData)
+      cartCount.innerHTML = cart.length
+      console.log("Item added to cart:", newData, cart, cart.length)
     }
   } catch (error) {
     console.error("Error:", error.message)
@@ -47,7 +52,8 @@ const itemCart = async id => {
 }
 
 addToCartBtn.addEventListener("click", () => {
-  const productId = 1
+  const productId = 3
   itemCart(productId)
-  // window.location.href = "cart-style1.html"
 })
+
+itemCart(productId)
