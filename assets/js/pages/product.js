@@ -15,7 +15,7 @@ try {
   const title = document.getElementsByClassName("collection-hero__title")[0]
   const itemQuantity = document.getElementsByClassName("bold-item")[0]
   const gallery = document.getElementById("gallery")
-  console.log(gallery)
+  // console.log(gallery)
 
   //check if app is in development or production
   const isLocalhost = Boolean(
@@ -36,7 +36,7 @@ try {
     const res = await fetch(`${API_URL}product/get/${id}`)
     const data = await res.json()
     const newData = data.data
-    console.log(newData)
+    // console.log(newData)
 
     const {
       VendorId,
