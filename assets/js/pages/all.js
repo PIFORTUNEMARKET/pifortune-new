@@ -9,7 +9,7 @@ try {
   const logoutBtn = document.querySelector(".logout-btn")
 
   //check if app is in development or production
-  const isLocalhost = Boolean(
+  let isLocalhost = Boolean(
     window.location.hostname === "localhost" ||
       window.location.hostname === "[::1]" ||
       window.location.hostname.match(
@@ -17,7 +17,7 @@ try {
       )
   )
 
-  const API_URL = isLocalhost
+  let API_URL = isLocalhost
     ? "http://localhost:4000/api/"
     : "https://pifortune-server.onrender.com/api/"
 
@@ -58,7 +58,7 @@ try {
       onIncompletePaymentFound
     )
 
-    console.log(authResult);
+    console.log(authResult)
 
     fetch(`${API_URL}user/auth/register`, {
       method: "POST",
