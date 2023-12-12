@@ -151,7 +151,7 @@ checkOut.addEventListener("click", async (e) => {
   const onIncompletePaymentFound = (payment) => {
     console.log("onIncompletePaymentFound", payment);
 
-    return fetch(`${backendURL}/payments/incomplete`, {
+    return fetch(`${backendURL}/incomplete`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -187,7 +187,7 @@ checkOut.addEventListener("click", async (e) => {
             console.log("onReadyForServerApproval", paymentId);
 
             try {
-              fetch(`${backendURL}/payments/${paymentId}/approve`, {
+              fetch(`${backendURL}/${paymentId}/approve`, {
                 method: "POST",
                 headers: {
                   Accept: "application/json",
@@ -203,7 +203,7 @@ checkOut.addEventListener("click", async (e) => {
           },
           onReadyForServerCompletion: function (paymentId, txid) {
             console.log("onReadyForServerCompletion", paymentId, txid);
-            fetch(`${backendURL}/payments/complete`, {
+            fetch(`${backendURL}/complete`, {
               method: "POST",
               headers: {
                 Accept: "application/json",
@@ -216,7 +216,7 @@ checkOut.addEventListener("click", async (e) => {
           onCancel: function (paymentId) {
             console.log(paymentId);
 
-            return fetch(`${backendURL}/payments/cancelled_payment`, {
+            return fetch(`${backendURL}/cancelled_payment`, {
               method: "POST",
               headers: {
                 Accept: "application/json",
