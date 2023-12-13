@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 })
 
 let addCartData = []
-let addCart = id => {
+const addCart = id => {
   for (let i = 0; i < newData.length; i++) {
     newData[i].inCart = 0
   }
@@ -168,10 +168,15 @@ let addCart = id => {
   if (cartItem === undefined) {
     addCartData.push({ ...product, inCart: 1 })
   } else {
-    cartItem.inCart += 1
+    if (cartItem.inCart < product.available_quantity) {
+      cartItem.inCart += 1
+    } else {
+      alert("Product already exist in the cart")
+    }
   }
-  saveCart()
+  localStorage.setItem("addcartdata", JSON.stringify(addCartData))
   calculation()
+  loadCart()
 }
 
 let calculation = () => {
@@ -181,10 +186,6 @@ let calculation = () => {
     cartIcon.textContent = totalItems.toString()
   }
   localStorage.setItem("cartIconCount", totalItems.toString())
-}
-
-let saveCart = () => {
-  localStorage.setItem("addcartdata", JSON.stringify(addCartData))
 }
 
 let loadCart = () => {

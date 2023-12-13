@@ -16,6 +16,8 @@ const shoppingCart = document.getElementById("shopping-cart")
 const shoppingCartNo = document.getElementById("cart-items-number")
 const cartInput = document.getElementById("cart-input")
 const label = document.getElementById("label")
+const totalProductPrices = document.getElementById("product-price")
+const openCart = document.getElementById("open-cart")
 
 let newStoredCart
 
@@ -29,11 +31,13 @@ if (cartIcon && storedCartIconCount) {
 }
 
 let generateCartItem = () => {
-  if (storedCart.length !== 0) {
+  const storedCart = localStorage.getItem("addcartdata")
+  newStoredCart = JSON.parse(storedCart)
+  if (newStoredCart && newStoredCart.length !== 0) {
     return (shoppingCartContainer.innerHTML = newStoredCart
       .map(x => {
         let { id, name, pictures, price, inCart } = x
-        let theFirstPic = pictures.split(";")[0]
+        let theFirstPic = pictures ? pictures.split(";")[0] : ""
         return `
       <li class="item d-flex justify-content-center align-items-center shopping-cart-item" id="shopping-cart_product-id-${id}">
                                 <a class="product-image" href="product-layout1.html">
@@ -59,9 +63,7 @@ let generateCartItem = () => {
                                                     class="icon an an-plus-l" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    <a href="#" class="edit-i remove"><i class="icon an an-edit-l"
-                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit"></i></a>
-                                    <a href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
+                                    <a onclick="removeItem(${id})" href="#" class="remove"><i class="an an-times-r" data-bs-toggle="tooltip"
                                             data-bs-placement="top" title="Remove"></i></a>
                                 </div>
                             </li>
@@ -76,7 +78,9 @@ let generateCartItem = () => {
   }
 }
 
-generateCartItem()
+openCart.addEventListener("click", () => {
+  generateCartItem()
+})
 
 shoppingCartNo.innerHTML = newStoredCart.length
 
@@ -88,28 +92,58 @@ let increment = id => {
   updateCartIconCount()
 
   generateCartItem()
+
+  TotalAmount()
 }
 
 let decrement = id => {
   let search = newStoredCart.find(x => x.id === id)
-  console.log(search)
-  console.log(newStoredCart)
-  if (search.inCart === 0) {
-    newStoredCart = newStoredCart.filter(x => x.inCart != 0)
+  if (search.inCart <= 1) {
+    search.incart = 1
   } else {
     search.inCart -= 1
   }
-  console.log(search)
   localStorage.setItem("addcartdata", JSON.stringify(newStoredCart))
 
   updateCartIconCount()
 
   generateCartItem()
+
+  TotalAmount()
+}
+
+let removeItem = id => {
+  newStoredCart = newStoredCart.filter(item => item.id !== id)
+  localStorage.setItem("addcartdata", JSON.stringify(newStoredCart))
+
+  generateCartItem()
+
+  updateCartIconCount()
+
+  TotalAmount()
 }
 
 let updateCartIconCount = () => {
   const cartIcon = document.getElementById("cart-icon-count")
-
-  cartIcon.textContent = newStoredCart.length
-  localStorage.setItem("cartIconCount", newStoredCart.length)
+  let result = newStoredCart.reduce((acc, item) => acc + item.inCart, 0)
+  cartIcon.textContent = result.toString()
+  localStorage.setItem("cartIconCount", result.toString())
 }
+
+let TotalAmount = () => {
+  if (newStoredCart.length && newStoredCart.length !== 0) {
+    let amount = newStoredCart
+      .map(item => {
+        let { inCart, price, id } = item
+        let search = newStoredCart.find(x => x.id === id)
+        return inCart * price
+      })
+      .reduce((x, y) => x + y, 0)
+    totalProductPrices.innerHTML = `$ ${amount}`
+  } else {
+    totalProductPrices.innerHTML = `$ 0`
+  }
+  localStorage.setItem("cartTotalPrice", JSON.stringify(totalProductPrices))
+}
+
+TotalAmount()
