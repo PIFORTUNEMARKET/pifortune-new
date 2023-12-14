@@ -96,8 +96,8 @@
                                 <a href="cart-style1.html" class="site-header__cart btn-minicart" data-bs-toggle="modal"
                                     data-bs-target="#minicart-drawer">
                                     <i class="icon an an-sq-bag"></i><span
-                                        class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle">2</span><span
-                                        class="tooltip-label">Cart</span>
+                                        class="site-cart-count counter d-flex-center justify-content-center position-absolute translate-middle rounded-circle"
+                                        id="cart-icon-count">2</span><span class="tooltip-label">Cart</span>
                                 </a>
                             </div>
                             <!--End Minicart Drawer-->
@@ -836,135 +836,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="cart-items" id="cart-items">
-                                    <tr class="cart__row border-bottom line1 cart-flex border-top" id="cart__row">
-                                        <td class="cart-delete text-center small--hide"><a href="#"
-                                                class="btn btn--secondary cart__remove remove-icon position-static"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
-                                                    class="icon an an-times-r"></i></a></td>
-                                        <td class="cart__image-wrapper cart-flex-item">
-                                            <a href="product-layout1.html"><img class="cart__image blur-up lazyload"
-                                                    data-src="assets/images/products/100x120.jpg"
-                                                    src="assets/images/products/100x120.jpg"
-                                                    alt="Sunset Sleep Scarf Top" width="80" /></a>
-                                        </td>
-                                        <td class="cart__meta small--text-left cart-flex-item">
-                                            <div class="list-view-item__title">
-                                                <a href="product-layout1.html">Sunset Sleep Scarf Top</a>
-                                            </div>
-                                            <div class="cart__meta-text">
-                                                Color: Black<br>Size: Small<br>Qty: 2
-                                            </div>
-                                            <div class="cart-price d-md-none">
-                                                <span class="money fw-500">$297.00</span>
-                                            </div>
-                                        </td>
-                                        <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                            <span class="money cart-money">$99.00</span>
-                                        </td>
-                                        <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
-                                            <div class="cart__qty d-flex justify-content-end justify-content-md-center">
-                                                <div class="qtyField">
-                                                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);"><i
-                                                            class="icon an an-minus-r"></i></a>
-                                                    <input class="cart__qty-input qty" type="text" name="updates[]"
-                                                        value="1" pattern="[0-9]*" />
-                                                    <a class="qtyBtn plus addition" href="javascript:void(0);"><i
-                                                            class="icon an an-plus-r"></i></a>
-                                                </div>
-                                            </div>
-                                            <a href="#" title="Remove"
-                                                class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
-                                        </td>
-                                        <td class="cart-price cart-flex-item text-center small--hide">
-                                            <span class="total-money fw-500">$297.00</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="cart__row border-bottom line1 cart-flex" id="cart__row">
-                                        <td class="cart-delete text-center small--hide"><a href="#"
-                                                class="btn btn--secondary cart__remove remove-icon position-static"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
-                                                    class="icon an an-times-r"></i></a></td>
-                                        <td class="cart__image-wrapper cart-flex-item">
-                                            <a href="product-layout1.html"><img class="cart__image blur-up lazyload"
-                                                    data-src="assets/images/products/100x120.jpg"
-                                                    src="assets/images/products/100x120.jpg" alt="Long Sleeve T-shirts"
-                                                    width="80" /></a>
-                                        </td>
-                                        <td class="cart__meta small--text-left cart-flex-item">
-                                            <div class="list-view-item__title">
-                                                <a href="product-layout1.html">Long Sleeve T-shirts</a>
-                                            </div>
-                                            <div class="cart__meta-text">
-                                                Color: Gray<br>Size: 28<br>
-                                            </div>
-                                            <div class="cart-price d-md-none">
-                                                <span class="money fw-500">$128.00</span>
-                                            </div>
-                                        </td>
-                                        <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                            <span class="money cart-money">$128.00</span>
-                                        </td>
-                                        <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
-                                            <div class="cart__qty d-flex justify-content-end justify-content-md-center">
-                                                <div class="qtyField">
-                                                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);"><i
-                                                            class="icon an an-minus-r"></i></a>
-                                                    <input class="cart__qty-input qty" type="text" name="updates[]"
-                                                        value="1" pattern="[0-9]*" />
-                                                    <a class="qtyBtn plus addition" href="javascript:void(0);"><i
-                                                            class="icon an an-plus-r"></i></a>
-                                                </div>
-                                            </div>
-                                            <a href="#" title="Remove"
-                                                class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
-                                        </td>
-                                        <td class="cart-price cart-flex-item text-center small--hide">
-                                            <span class="total-money fw-500">$128.00</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="cart__row border-bottom line1 cart-flex" id="cart__row">
-                                        <td class="cart-delete text-center small--hide"><a href="#"
-                                                class="btn btn--secondary cart__remove remove-icon position-static"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
-                                                    class="icon an an-times-r"></i></a></td>
-                                        <td class="cart__image-wrapper cart-flex-item">
-                                            <a href="product-layout1.html"><img class="cart__image blur-up lazyload"
-                                                    data-src="assets/images/products/100x120.jpg"
-                                                    src="assets/images/products/100x120.jpg"
-                                                    alt="Weave Hoodie Sweatshirt" width="80" /></a>
-                                        </td>
-                                        <td class="cart__meta small--text-left cart-flex-item">
-                                            <div class="list-view-item__title">
-                                                <a href="product-layout1.html">Weave Hoodie Sweatshirt</a>
-                                            </div>
-                                            <div class="cart__meta-text">
-                                                Color: Navy<br>Size: Large<br>
-                                            </div>
-                                            <div class="cart-price d-md-none">
-                                                <span class="money fw-500">$350.00</span>
-                                            </div>
-                                        </td>
-                                        <td class="cart__price-wrapper cart-flex-item text-center small--hide">
-                                            <span class="money cart-money">$350.00</span>
-                                        </td>
-                                        <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
-                                            <div class="cart__qty d-flex justify-content-end justify-content-md-center">
-                                                <div class="qtyField">
-                                                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);"><i
-                                                            class="icon an an-minus-r"></i></a>
-                                                    <input class="cart__qty-input qty" type="text" name="updates[]"
-                                                        value="1" pattern="[0-9]*" />
-                                                    <a class="qtyBtn plus addition" href="javascript:void(0);"><i
-                                                            class="icon an an-plus-r"></i></a>
-                                                </div>
-                                            </div>
-                                            <a href="#" title="Remove"
-                                                class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
-                                        </td>
-                                        <td class="cart-price cart-flex-item text-center small--hide">
-                                            <span class="total-money fw-500">$350.00</span>
-                                        </td>
-                                    </tr>
+
                                 </tbody>
                                 <tbody class="empty-cart-text d-none">
                                     <tr>
@@ -980,8 +852,8 @@
                                                     class="text-decoration-underline">Continue shopping</span></a></td>
                                         <td colspan="3" class="text-end pt-3">
                                             <button type="submit" name="clear"
-                                                class="btn btn--link d-inline-flex align-items-center btn--small small--hide clear"><i
-                                                    class="me-1 icon an an-times-r"></i><span
+                                                class="btn btn--link d-inline-flex align-items-center btn--small small--hide clear"
+                                                id="clear-all-items"><i class="me-1 icon an an-times-r"></i><span
                                                     class="ms-1 text-decoration-underline">Clear Shopping
                                                     Cart</span></button>
                                             <button type="submit" name="update"
@@ -1532,7 +1404,7 @@
         <!--End Scoll Top-->
 
         <!--MiniCart Drawer-->
-        <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
+        <!-- <div class="minicart-right-drawer modal right fade" id="minicart-drawer">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div id="cart-drawer" class="block block-cart">
@@ -1626,7 +1498,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!--End MiniCart Drawer-->
         <div class="modalOverly"></div>
 

@@ -18,6 +18,7 @@ const cartInput = document.getElementById("cart-input")
 const label = document.getElementById("label")
 const totalProductPrices = document.getElementById("product-price")
 const openCart = document.getElementById("open-cart")
+const closeCart = document.getElementById("close-cart")
 
 let newStoredCart
 
@@ -34,6 +35,7 @@ let generateCartItem = () => {
   const storedCart = localStorage.getItem("addcartdata")
   newStoredCart = JSON.parse(storedCart)
   if (newStoredCart && newStoredCart.length !== 0) {
+    label.style.display = "none"
     return (shoppingCartContainer.innerHTML = newStoredCart
       .map(x => {
         let { id, name, pictures, price, inCart } = x
@@ -71,56 +73,40 @@ let generateCartItem = () => {
       })
       .join(""))
   } else {
-    shoppingCart.innerHTML = ``
-    label.innerHTML = `
-    <h2>Cart is Empty</h2>
-    `
+    shoppingCartContainer.innerHTML = ""
+    label.style.display = "block"
   }
 }
 
 openCart.addEventListener("click", () => {
-  generateCartItem()
+  updateCartContent()
 })
-
-shoppingCartNo.innerHTML = newStoredCart.length
 
 let increment = id => {
   let search = newStoredCart.find(x => x.id === id)
   search.inCart += 1
   localStorage.setItem("addcartdata", JSON.stringify(newStoredCart))
 
-  updateCartIconCount()
-
-  generateCartItem()
-
-  TotalAmount()
+  updateCartContent()
 }
 
 let decrement = id => {
   let search = newStoredCart.find(x => x.id === id)
   if (search.inCart <= 1) {
-    search.incart = 1
+    search.inCart = 1
   } else {
     search.inCart -= 1
   }
   localStorage.setItem("addcartdata", JSON.stringify(newStoredCart))
 
-  updateCartIconCount()
-
-  generateCartItem()
-
-  TotalAmount()
+  updateCartContent()
 }
 
 let removeItem = id => {
   newStoredCart = newStoredCart.filter(item => item.id !== id)
   localStorage.setItem("addcartdata", JSON.stringify(newStoredCart))
 
-  generateCartItem()
-
-  updateCartIconCount()
-
-  TotalAmount()
+  updateCartContent()
 }
 
 let updateCartIconCount = () => {
@@ -128,6 +114,10 @@ let updateCartIconCount = () => {
   let result = newStoredCart.reduce((acc, item) => acc + item.inCart, 0)
   cartIcon.textContent = result.toString()
   localStorage.setItem("cartIconCount", result.toString())
+}
+
+let updateShoppingCartNo = () => {
+  shoppingCartNo.innerHTML = newStoredCart.length
 }
 
 let TotalAmount = () => {
@@ -146,4 +136,25 @@ let TotalAmount = () => {
   localStorage.setItem("cartTotalPrice", JSON.stringify(totalProductPrices))
 }
 
-TotalAmount()
+const updateCartContent = () => {
+  generateCartItem()
+  updateCartIconCount()
+  TotalAmount()
+  updateShoppingCartNo()
+}
+
+closeCart.addEventListener("click", () => {
+  const storedCart = localStorage.getItem("addcartdata")
+  newStoredCart = JSON.parse(storedCart)
+  updateCartContent()
+})
+
+document.addEventListener("click", event => {
+  if (!shoppingCartContainer.contains(event.target)) {
+    const storedCart = localStorage.getItem("addcartdata")
+    newStoredCart = JSON.parse(storedCart)
+    updateCartContent()
+  }
+})
+
+updateCartContent()

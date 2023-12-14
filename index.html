@@ -691,13 +691,15 @@
                 <!--MiniCart Content-->
                 <div id="cart-drawer" class="block block-cart">
                     <div class="minicart-header">
-                        <a href="javascript:void(0);" class="close-cart" data-bs-dismiss="modal" aria-label="Close"><i
-                                class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
+                        <a href="javascript:void(0);" class="close-cart" id="close-cart" data-bs-dismiss="modal"
+                            aria-label="Close"><i class="an an-times-r" aria-hidden="true" data-bs-toggle="tooltip"
                                 data-bs-placement="left" title="Close"></i></a>
                         <h4 class="fs-6">Cart (<span id="cart-items-number">2</span> Items)</h4>
                     </div>
                     <div class="minicart-content">
-                        <div id="label"></div>
+                        <div id="label">
+                            <h2>Cart is Empty</h2>
+                        </div>
                         <ul class="clearfix" id="shopping-cart-container">
                         </ul>
                     </div>

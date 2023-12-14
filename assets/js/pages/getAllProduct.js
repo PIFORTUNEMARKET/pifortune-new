@@ -170,9 +170,7 @@ const addCart = id => {
   } else {
     if (cartItem.inCart < product.available_quantity) {
       cartItem.inCart += 1
-    } else {
-      alert("Product already exist in the cart")
-    }
+    } else return
   }
   localStorage.setItem("addcartdata", JSON.stringify(addCartData))
   calculation()
