@@ -147,19 +147,27 @@ checkOut.addEventListener("click", async (e) => {
   e.preventDefault();
 
   console.log("here");
+  console.log("test");
 
-  const onIncompletePaymentFound = (payment) => {
-    console.log("onIncompletePaymentFound", payment);
+  const onIncompletePaymentFound = async (payment) => {
+    try {
+      console.log("onIncompletePaymentFound", payment);
 
-    return fetch(`${backendURL}/incomplete`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({ payment }),
-    });
+      const response = await fetch(`${backendURL}/incomplete`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(payment),
+      });
+
+      console.log(response.status);
+      console.log(await response.json());
+    } catch (error) {
+      console.error("Error in onIncompletePaymentFound:", error);
+    }
   };
 
   const scopes = ["username", "payments"];
@@ -173,7 +181,7 @@ checkOut.addEventListener("click", async (e) => {
       const thePayment = await window.Pi.createPayment(
         {
           // Amount of π to be paid:
-          amount: 0.1,
+          amount: 1,
           // An explanation of the payment - will be shown to the user:
           memo: "Digital kitten", // e.g: "Digital kitten #1234",
           // An arbitrary developer-provided metadata object - for your own usage:
