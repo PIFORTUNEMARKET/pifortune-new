@@ -1,5 +1,6 @@
 //check if app is in development or production
-const isLocalhost = Boolean(
+
+isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
     window.location.hostname === "[::1]" ||
     window.location.hostname.match(
@@ -7,9 +8,11 @@ const isLocalhost = Boolean(
     )
 )
 
-const API_URL = isLocalhost
+API_URL = isLocalhost
   ? "http://localhost:4000/api/"
   : "https://pifortune-server.onrender.com/api/"
+
+let newData
 
 const getAllProducts = async () => {
   try {
@@ -17,10 +20,9 @@ const getAllProducts = async () => {
 
     const res = await fetch(`${API_URL}get/all/products`)
     const data = await res.json()
-    const newData = data.data
+    newData = data.data
     let products = ""
     newData.map(eachProduct => {
-      console.log(eachProduct)
       let theFirstPic = eachProduct.pictures.split(";")[0]
       let theSecondPic = eachProduct.pictures.split(";")[1]
       products += `
@@ -76,10 +78,13 @@ const getAllProducts = async () => {
                                         </a>
                                         <!--End Compare Button-->
                                     </div>
-                                    <div class="button-set-bottom position-absolute style1">
+                                    <div class="button-set-bottom position-absolute add-to-the-cart style1">
                                         <!--Cart Button-->
-                                        <a class="btn-icon btn btn-addto-cart pro-addtocart-popup rounded"
-                                            href="#pro-addtocart-popup">
+                                        <a class="btn-icon btn btn-addto-cart pro-addtocart-popup  rounded"
+                                        id="add-to-cart" onclick= "addCart(${
+                                          eachProduct.id
+                                        })"
+                                            >
                                             <i class="icon an an-cart-l"></i> <span>Add To Cart</span>
                                         </a>
                                         <!--End Cart Button-->
@@ -140,4 +145,54 @@ const getAllProducts = async () => {
   }
 }
 
-getAllProducts()
+document.addEventListener("DOMContentLoaded", async function () {
+  loadCart()
+  await getAllProducts()
+  calculation()
+})
+
+let addCartData = []
+const addCart = id => {
+  for (let i = 0; i < newData.length; i++) {
+    newData[i].inCart = 0
+  }
+  const product = newData.find(item => item.id === id)
+
+  if (product === undefined) {
+    console.log("Product not found")
+    return
+  }
+
+  const cartItem = addCartData.find(item => item.id === id)
+
+  if (cartItem === undefined) {
+    addCartData.push({ ...product, inCart: 1 })
+  } else {
+    if (cartItem.inCart < product.available_quantity) {
+      cartItem.inCart += 1
+    } else return
+  }
+  localStorage.setItem("addcartdata", JSON.stringify(addCartData))
+  calculation()
+  loadCart()
+}
+
+let calculation = () => {
+  let cartIcon = document.getElementById("cart-icon-count")
+  let totalItems = addCartData.reduce((acc, item) => acc + item.inCart, 0)
+  if (cartIcon) {
+    cartIcon.textContent = totalItems.toString()
+  }
+  localStorage.setItem("cartIconCount", totalItems.toString())
+}
+
+let loadCart = () => {
+  const storedCart = localStorage.getItem("addcartdata")
+  addCartData = storedCart ? JSON.parse(storedCart) : []
+
+  const cartIcon = document.getElementById("cart-icon-count")
+  const storedCartIconCount = localStorage.getItem("cartIconCount")
+  if (cartIcon && storedCartIconCount) {
+    cartIcon.textContent = storedCartIconCount
+  }
+}

@@ -1,6 +1,10 @@
 const addToCartBtn = document.getElementsByClassName(
   "product-form__cart-submit"
 )[0]
+const cartIcon = document.getElementsByClassName("header-cart")[0]
+console.log(cartIcon)
+const cartCount = document.getElementsByClassName("site-cart-count")[0]
+console.log(cartCount)
 
 //check if app is in development or production
 const isLocalhost = Boolean(
@@ -19,6 +23,9 @@ let cart = []
 
 const itemCart = async id => {
   try {
+    const params = new URLSearchParams(location.search)
+    const id = Number(params.get("id"))
+    console.log(id)
     const res = await fetch(`${API_URL}product/get/${id}`)
 
     if (!res.ok) {
@@ -28,8 +35,10 @@ const itemCart = async id => {
     const data = await res.json()
     const newData = data.data
 
-    if (cart.some(item => item.id === id)) {
-      alert("Product already in cart!")
+    const existingItem = cart.find(item => item.id === id)
+
+    if (existingItem) {
+      existingItem.numberOfUnits = 1
     } else {
       const cart = JSON.parse(localStorage.getItem("cart")) || []
       cart.push({
@@ -39,15 +48,17 @@ const itemCart = async id => {
 
       localStorage.setItem("cart", JSON.stringify(cart))
 
+      cartCount.innerHTML = cart.length
       console.log("Item added to cart:", newData)
+
+      console.log("Updated Cart:", cart)
     }
   } catch (error) {
     console.error("Error:", error.message)
   }
 }
 
-addToCartBtn.addEventListener("click", () => {
-  const productId = 1
-  itemCart(productId)
-  // window.location.href = "cart-style1.html"
+addToCartBtn.addEventListener("click", id => {
+  // e.preventDefault()
+  itemCart(id)
 })

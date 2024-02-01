@@ -1,145 +1,162 @@
-const removeCartItemBtn = document.getElementsByClassName("cart__remove");
-const cartItemContainer = document.getElementsByClassName("cart-items")[0];
 const itemContainer = document.getElementById("cart-items");
-// const mainPriceElement = document.getElementsByClassName("money")[1];
-const minusElement = document.getElementsByClassName("cart-minus");
-const plusElement = document.getElementsByClassName("addition");
-let quantityInputs = document.querySelectorAll(".cart__qty-input");
-let cartRows = document.getElementsByClassName("cart__row");
-let priceElement = document.getElementsByClassName("cart-money");
-let totalPrice = document.getElementsByClassName("total-money");
 let subTotal = document.getElementsByClassName("subtotal-money")[0];
+const clearAllCart = document.getElementById("clear-all-items");
+const emptyCartMsg = document.getElementsByClassName("empty-cart-text");
 let checkOut = document.getElementById("cartCheckout");
 const backendURL = "https://api.minepi.com/v2/payments";
-// const userString = localStorage.getItem("user");
 
-// const user = JSON.parse(userString);
+//check if app is in development or production
+isLocalhost = Boolean(
+  window.location.hostname === "localhost" ||
+    window.location.hostname === "[::1]" ||
+    window.location.hostname.match(
+      /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+    )
+);
 
-const accessToken =
-  "sr7atpu0b5cfytp6gj0katmdsthnksrkepzamtddlwyzld5uxjmhdbgdbq8uqdue";
+API_URL = isLocalhost
+  ? "http://localhost:4000/api/"
+  : "https://pifortune-server.onrender.com/api/";
 
-console.log(accessToken);
-const clearCart = document.getElementsByClassName("clear")[0];
-const emptyCartText = document.getElementsByClassName("empty-cart-text")[0];
+let newStoredItem;
 
-for (let i = 0; i < cartRows.length; i++) {
-  let price = parseFloat(priceElement[i].innerText.replace("$", ""));
-  let inputValue = Number(quantityInputs[i].value);
-  let newSubTotal = price * inputValue;
+const storedCartItem = localStorage.getItem("addcartdata");
+newStoredItem = JSON.parse(storedCartItem);
 
-  totalPrice[i].innerText = `$${newSubTotal.toFixed(2)}`;
-
-  updateCartTotal();
-
-  plusElement[i].addEventListener("click", function (e) {
-    inputValue += 1;
-    quantityInputs[i].value = inputValue;
-    let calc = inputValue * price;
-    totalPrice[i].innerText = `$${calc.toFixed(2)}`;
-    updateCartTotal();
-  });
-
-  minusElement[i].addEventListener("click", function (e) {
-    if (inputValue <= 1) {
-      inputValue = 1;
-    } else {
-      inputValue--;
-    }
-    quantityInputs[i].value = inputValue;
-    let calc = inputValue * price;
-    totalPrice[i].innerText = `$${calc.toFixed(2)}`;
-    updateCartTotal();
-  });
+const localCartIcon = document.getElementById("cart-icon-count");
+const storedIconCount = localStorage.getItem("cartIconCount");
+if (localCartIcon && storedIconCount) {
+  localCartIcon.textContent = storedIconCount;
 }
 
-function updateCartTotal() {
-  let sum = 0;
-  for (let i = 0; i < totalPrice.length; i++) {
-    let totalPriceValue = parseFloat(totalPrice[i].innerText.replace("$", ""));
-    sum += totalPriceValue;
+let generateCart = () => {
+  const storedCart = localStorage.getItem("addcartdata");
+  newStoredItem = JSON.parse(storedCart);
+  if (newStoredItem && newStoredItem.length !== 0) {
+    return (itemContainer.innerHTML = newStoredItem
+      .map((x) => {
+        let { id, name, pictures, price, inCart, quantity } = x;
+        let theFirstPic = pictures ? pictures.split(";")[0] : "";
+        return `
+        <tr class="cart__row border-bottom line1 cart-flex border-top" id="cart__row-${id}">
+        <td class="cart-delete text-center small--hide"><a href="#" onclick="remove(${id})"
+                class="btn btn--secondary cart__remove remove-icon position-static"
+                data-bs-toggle="tooltip" data-bs-placement="top" title="Remove item"><i
+                    class="icon an an-times-r"></i></a></td>
+        <td class="cart__image-wrapper cart-flex-item">
+            <a href="product-layout1.html"><img class="cart__image blur-up lazyload"
+                    data-src=${theFirstPic}
+                    src=${theFirstPic}
+                    alt=${name} /></a>
+        </td>
+        <td class="cart__meta small--text-left cart-flex-item">
+            <div class="list-view-item__title">
+                <a href="product-layout1.html">${name}</a>
+            </div>
+            <div class="cart__meta-text">
+                Color: Black<br>Size: Small<br>Qty: ${quantity}
+            </div>
+            <div class="cart-price d-md-none">
+                <span class="money fw-500">$297.00</span>
+            </div>
+        </td>
+        <td class="cart__price-wrapper cart-flex-item text-center small--hide">
+            <span class="money cart-money">$ ${price}</span>
+        </td>
+        <td class="cart__update-wrapper cart-flex-item text-end text-md-center">
+            <div class="cart__qty d-flex justify-content-end justify-content-md-center">
+                <div class="qtyField">
+                    <a class="qtyBtn minus cart-minus" href="javascript:void(0);" onclick="minus(${id})"><i
+                            class="icon an an-minus-r"></i></a>
+                    <input class="cart__qty-input qty" type="text" name="updates[]"
+                        value=${inCart} pattern="[0-9]*" />
+                    <a class="qtyBtn plus addition" href="javascript:void(0);" onclick="plus(${id})"><i
+                            class="icon an an-plus-r"></i></a>
+                </div>
+            </div>
+            <a href="#" title="Remove"
+                class="removeMb d-md-none d-inline-block text-decoration-underline mt-2 me-3">Remove</a>
+        </td>
+        <td class="cart-price cart-flex-item text-center small--hide">
+            <span class="total-money fw-500">$ ${price * inCart}</span>
+        </td>
+    </tr>`;
+      })
+      .join(""));
+  } else {
+    itemContainer.innerHTML = "<h2>Cart is Empty</h2>";
+    // emptyCartMsg.setAttribute("class", "d-block")
+    // label.style.display = "block"
   }
-  subTotal.innerText = "$" + sum.toFixed(2);
-}
+};
 
-if (itemContainer.children.length === 0) {
-  cartItemContainer.remove();
-  emptyCartText.setAttribute("class", "d-block");
-}
+let plus = (id) => {
+  let search = newStoredItem.find((x) => x.id === id);
+  search.inCart += 1;
+  localStorage.setItem("addcartdata", JSON.stringify(newStoredItem));
 
-for (let i = 0; i < removeCartItemBtn.length; i++) {
-  const button = removeCartItemBtn[i];
-  button.addEventListener("click", (e) => {
-    let btnClicked = e.target;
-    btnClicked.parentElement.parentElement.parentElement.remove();
-  });
-}
+  updateEntireContent();
+};
 
-// for (let i = 0; i < quantityInputs.length; i++) {
-//   let input = quantityInputs[i]
-//   input.addEventListener("change", e => {
-//     e.preventDefault()
-//     let inputChange = e.target.value
-//     // console.log(inputChange)
-//     if (isNaN(inputChange) || inputChange <= 0) {
-//       inputChange = 1
-//     }
-//     quantity = inputChange
-//   })
-// }
+let minus = (id) => {
+  let search = newStoredItem.find((x) => x.id === id);
+  if (search.inCart <= 1) {
+    search.inCart = 1;
+  } else {
+    search.inCart -= 1;
+  }
+  localStorage.setItem("addcartdata", JSON.stringify(newStoredItem));
 
-// for (var i = 0; i < minusElement.length; i++) {
-//   minusElement[i].addEventListener("click", function (event) {
-//     const buttonClicked = event.target
-//     console.log(buttonClicked)
-//     let input = buttonClicked.parentElement.nextElementSibling
-//     inputValue = input.value
-//     console.log(inputValue)
-//     if (isNaN(inputValue) || inputValue <= 0) {
-//       var newValue = parseInt(inputValue) - 1
-//       inputValue.innerText = newValue
-//     }
-//     // console.log(inputValue)
-//     for (let i = 0; i < cartRows.length; i++) {
-//       let cartRow = cartRows[i]
-//       let priceElement = cartRow.getElementsByClassName("money")[1]
-//       let totalPrice = cartRow.getElementsByClassName("total-money")[0]
-//       let price = parseFloat(priceElement.innerText.replace("$", ""))
-//       let quantity = inputValue
-//       let priceMultiplication = price * quantity
-//       total = priceMultiplication
-//       total = Math.round(total * 100) / 100
-//       totalPrice.innerText = `$${total}`
-//     }
-//   })
+  updateEntireContent();
+};
 
-//   // updateCartTotal()
-// }
+let remove = (id) => {
+  newStoredItem = newStoredItem.filter((item) => item.id !== id);
+  localStorage.setItem("addcartdata", JSON.stringify(newStoredItem));
 
-// for (var i = 0; i < plusElement.length; i++) {
-//   console.log(i, plusElement[i])
-//   plusElement[i].addEventListener("click", function (event) {
-//     const btnClicked = event.target
-//     console.log(i, plusElement[i])
-//     console.log(i, btnClicked)
-//     let input = btnClicked.parentElement.previousElementSibling.value
-//     let newValue = parseInt(input) + 1
-//     input.innerText = newValue
-//     console.log(input)
+  updateEntireContent();
+};
 
-// for (let j = 0; j < cartRows.length; j++) {
-//   let cartRow = cartRows[j]
-//   console.log(cartRow)
-//   let priceElement = cartRow.getElementsByClassName("money")[1]
-//   let totalPrice = cartRow.getElementsByClassName("total-money")[0]
-//   let price = parseFloat(priceElement.innerText.replace("$", ""))
-//   let quantity = input
-//   let priceMultiplication = price * quantity
-//   total = priceMultiplication
-//   total = Math.round(total * 100) / 100
-//   totalPrice.innerText = `$${total}`
-// }
-//   })
-// }
+let clearCart = (e) => {
+  e.preventDefault();
+  console.log("Clear Cart Clicked");
+  newStoredItem = [];
+  localStorage.setItem("addcartdata", JSON.stringify(newStoredItem));
+  generateCart();
+  updateCartIconNo();
+};
+
+clearAllCart.addEventListener("click", clearCart);
+
+let updateCartIconNo = () => {
+  let result = newStoredItem.reduce((acc, item) => acc + item.inCart, 0);
+  localCartIcon.textContent = result.toString();
+  localStorage.setItem("cartIconCount", result.toString());
+};
+
+let TotalCartAmount = () => {
+  if (newStoredItem.length && newStoredItem.length !== 0) {
+    let amount = newStoredItem
+      .map((item) => {
+        let { inCart, price, id } = item;
+        let search = newStoredItem.find((x) => x.id === id);
+        return inCart * price;
+      })
+      .reduce((x, y) => x + y, 0);
+    subTotal.innerHTML = `$ ${amount}`;
+  } else {
+    subTotal.innerHTML = `$ 0`;
+  }
+  localStorage.setItem("cartTotalPrice", JSON.stringify(subTotal));
+};
+
+const updateEntireContent = () => {
+  generateCart();
+  updateCartIconNo();
+  TotalCartAmount();
+};
+
+updateEntireContent();
 
 let requiredPayment = parseFloat(subTotal.innerHTML.replace("$", ""));
 
@@ -147,27 +164,19 @@ checkOut.addEventListener("click", async (e) => {
   e.preventDefault();
 
   console.log("here");
-  console.log("test");
 
-  const onIncompletePaymentFound = async (payment) => {
-    try {
-      console.log("onIncompletePaymentFound", payment);
+  const onIncompletePaymentFound = (payment) => {
+    console.log("onIncompletePaymentFound", payment);
 
-      const response = await fetch(`${backendURL}/incomplete`, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(payment),
-      });
-
-      console.log(response.status);
-      console.log(await response.json());
-    } catch (error) {
-      console.error("Error in onIncompletePaymentFound:", error);
-    }
+    return fetch(`${backendURL}/payments/incomplete`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({ payment }),
+    });
   };
 
   const scopes = ["username", "payments"];
@@ -181,7 +190,7 @@ checkOut.addEventListener("click", async (e) => {
       const thePayment = await window.Pi.createPayment(
         {
           // Amount of π to be paid:
-          amount: 1,
+          amount: 0.1,
           // An explanation of the payment - will be shown to the user:
           memo: "Digital kitten", // e.g: "Digital kitten #1234",
           // An arbitrary developer-provided metadata object - for your own usage:
@@ -195,7 +204,7 @@ checkOut.addEventListener("click", async (e) => {
             console.log("onReadyForServerApproval", paymentId);
 
             try {
-              fetch(`${backendURL}/${paymentId}/approve`, {
+              fetch(`${backendURL}/payments/${paymentId}/approve`, {
                 method: "POST",
                 headers: {
                   Accept: "application/json",
@@ -211,7 +220,7 @@ checkOut.addEventListener("click", async (e) => {
           },
           onReadyForServerCompletion: function (paymentId, txid) {
             console.log("onReadyForServerCompletion", paymentId, txid);
-            fetch(`${backendURL}/complete`, {
+            fetch(`${backendURL}/payments/complete`, {
               method: "POST",
               headers: {
                 Accept: "application/json",
@@ -224,7 +233,7 @@ checkOut.addEventListener("click", async (e) => {
           onCancel: function (paymentId) {
             console.log(paymentId);
 
-            return fetch(`${backendURL}/cancelled_payment`, {
+            return fetch(`${backendURL}/payments/cancelled_payment`, {
               method: "POST",
               headers: {
                 Accept: "application/json",
@@ -251,9 +260,4 @@ checkOut.addEventListener("click", async (e) => {
     });
 
   console.log(authResult);
-});
-clearCart.addEventListener("click", (e) => {
-  e.preventDefault();
-  cartItemContainer.remove();
-  emptyCartText.setAttribute("class", "d-block");
 });
